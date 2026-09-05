@@ -1,105 +1,120 @@
 'use client';
 
-import React, { useState } from 'react';
-import MagneticElement from './MagneticElement';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { projects } from '../lib/projects';
 
+const ProjectBlock = ({ project }) => (
+  <div className="mb-32 md:mb-48 group">
+    <a href={`/work/${project.slug}`} className="block w-full overflow-hidden mb-8 relative image-reveal-container bg-white/5" data-cursor-text="VIEW">
+      <img 
+        src={project.thumbnail} 
+        alt={project.title} 
+        className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 ease-out image-reveal-inner" 
+      />
+      <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+    </a>
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-white/20 pb-8 reveal-item">
+      <div className="max-w-4xl">
+        <h4 className="type-h2 md:text-6xl uppercase mb-2 tracking-tight leading-none">
+          {project.client} <span className="text-white/40 font-light mx-2">&times;</span> {project.title}
+        </h4>
+        <div className="type-meta text-white/50 tracking-widest uppercase mt-4">
+          {project.category} / {project.year}
+        </div>
+      </div>
+      <div className="text-left md:text-right w-full md:w-1/3 mt-4 md:mt-0">
+         <span className="type-meta text-white/40 block mb-2">SCOPE</span>
+         <div className="flex flex-wrap md:justify-end gap-x-3 gap-y-1 type-meta uppercase text-white/80">
+           {project.work.map((w, i) => (
+             <React.Fragment key={i}>
+               <span>{w}</span>
+               {i < project.work.length - 1 && <span className="text-white/20">/</span>}
+             </React.Fragment>
+           ))}
+         </div>
+      </div>
+    </div>
+  </div>
+);
+
 export default function SelectedWorkSection() {
-  const [activeTab, setActiveTab] = useState('ALL');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    // Parallax and reveals for images
+    const containers = document.querySelectorAll('.image-reveal-container');
+    containers.forEach((container) => {
+      const inner = container.querySelector('.image-reveal-inner');
+      
+      gsap.fromTo(
+        container,
+        { clipPath: 'inset(10% 0 0 0)' },
+        {
+          clipPath: 'inset(0% 0 0 0)',
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 85%',
+          }
+        }
+      );
 
-  const categories = ['ALL', 'DROPS', 'COLLABORATIONS', 'DESIGN / DEVELOPMENT'];
+      if (inner) {
+        gsap.to(inner, {
+          yPercent: 10,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      }
+    });
 
-  const filteredProjects = activeTab === 'ALL' 
-    ? projects 
-    : projects.filter(p => p.category === activeTab);
+  }, []);
+
+  const dropProjects = projects.filter(p => p.category === 'DROPS');
+  const collabProjects = projects.filter(p => p.category === 'COLLABORATIONS');
+  const designProjects = projects.filter(p => p.category === 'DESIGN / DEVELOPMENT');
+
+  const renderCategory = (title, categoryProjects) => {
+    if (categoryProjects.length === 0) return null;
+    return (
+      <div className="mb-32">
+        <h3 className="type-meta text-[var(--color-vaeren-concrete)] tracking-[0.3em] uppercase border-b border-white/10 pb-4 mb-16">
+          {title}
+        </h3>
+        {categoryProjects.map(p => (
+          <ProjectBlock key={p.slug} project={p} />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <section id="work" className="bg-[var(--color-vaeren-void)] text-[var(--color-vaeren-bone)] py-24 md:py-48 px-4 md:px-12 relative z-20 border-t border-white/5 scroll-mt-20">
       <div className="w-full max-w-[1400px] mx-auto">
         
         {/* Header Block */}
-        <div className="mb-24 md:mb-32 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <div className="max-w-3xl">
-            <h2 className="type-meta text-[var(--color-vaeren-concrete)] mb-4 tracking-[0.2em] uppercase">Selected Work</h2>
-            <h3 className="type-h1 leading-[1.1] mb-6">FROM IDEA TO OBJECT.</h3>
-            <p className="type-body text-[var(--color-vaeren-ash)] text-lg max-w-xl leading-relaxed">
-              We collaborate with streetwear brands to create distinctive garments, drops, campaigns, and product systems — from the first concept to the final piece.
-            </p>
-          </div>
+        <div className="mb-32 md:mb-48">
+          <h2 className="type-meta text-[var(--color-vaeren-concrete)] mb-4 tracking-[0.2em] uppercase">Selected Work</h2>
+          <h3 className="type-h1 leading-[1.1] mb-6 max-w-4xl">DESIGNED TO EXIST OUTSIDE THE ORDINARY.</h3>
+          <p className="type-body text-[var(--color-vaeren-ash)] text-lg max-w-xl leading-relaxed">
+            A selection of drops, collaborations, product systems, and creative work developed with brands and independent labels.
+          </p>
         </div>
 
-        {/* Categories Tab */}
-        <div className="flex flex-wrap gap-4 md:gap-8 mb-16 type-meta uppercase tracking-widest text-sm border-b border-white/10 pb-6">
-          {categories.map((cat) => (
-            <button 
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`transition-colors duration-300 ${activeTab === cat ? 'text-white border-b-2 border-white pb-1 -mb-[25px]' : 'text-white/40 hover:text-white/70'}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Grid */}
-        <div className="flex flex-col gap-32">
-          {filteredProjects.length > 0 ? (
-            filteredProjects.map((project, index) => (
-              <div key={project.slug} className="group relative flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-                
-                {/* Image Block */}
-                <a href={`/work/${project.slug}`} className="w-full md:w-2/3 block overflow-hidden aspect-[4/5] md:aspect-[3/2] relative bg-white/5" data-cursor-text="VIEW">
-                  <img 
-                    src={project.thumbnail} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                </a>
-
-                {/* Meta Block (Technical Layout) */}
-                <div className="w-full md:w-1/3 flex flex-col pt-4 md:sticky md:top-32">
-                  <div className="flex justify-between items-end border-b border-white/20 pb-4 mb-8">
-                    <h4 className="type-h2">{project.title}</h4>
-                    <span className="type-meta text-white/50">{project.year}</span>
-                  </div>
-                  
-                  <div className="flex flex-col gap-6 type-meta text-[var(--color-vaeren-ash)]">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-white/40 text-xs">CLIENT</span>
-                      <span className="uppercase text-white">{project.client}</span>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-white/40 text-xs">TYPE</span>
-                      <span className="uppercase text-white">{project.type}</span>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-white/40 text-xs">SCOPE OF WORK</span>
-                      <ul className="flex flex-col gap-1 mt-1">
-                        {project.work.map((w, i) => (
-                          <li key={i} className="text-white">- {w}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-12">
-                    <MagneticElement strength={0.2}>
-                      <a href={`/work/${project.slug}`} className="inline-block uppercase type-meta tracking-widest text-white border-b border-white/30 hover:border-white transition-colors pb-1" data-cursor-text="EXPLORE">
-                        View Project &rarr;
-                      </a>
-                    </MagneticElement>
-                  </div>
-                </div>
-
-              </div>
-            ))
-          ) : (
-            <div className="py-24 w-full text-center border border-white/10 bg-white/5">
-              <span className="type-meta uppercase tracking-widest text-[var(--color-vaeren-ash)]">0 PROJECTS — IN DEVELOPMENT</span>
-            </div>
-          )}
-        </div>
+        {/* Sequential Editorial Categories */}
+        {renderCategory('DROPS', dropProjects)}
+        {renderCategory('COLLABORATIONS', collabProjects)}
+        {renderCategory('DESIGN / DEVELOPMENT', designProjects)}
 
       </div>
     </section>
