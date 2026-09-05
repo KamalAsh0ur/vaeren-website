@@ -166,7 +166,10 @@ export default function OverlayUI() {
           {/* Starting Screen */}
           <div id="start-screen" className="absolute left-1/2 top-[75%] md:top-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full text-center px-4">
             <h1 className="type-h2 mb-4 tracking-[0.2em] opacity-100">VAEREN STUDIOS</h1>
-            <h2 className="type-body text-white mb-6 tracking-[0.2em] uppercase opacity-90">Don't Make What Already Exists.</h2>
+            <h2 className="type-body text-white mb-4 tracking-[0.2em] uppercase opacity-90">Don't Make What Already Exists.</h2>
+            <p className="type-body text-white/60 max-w-lg mx-auto mb-8 text-sm normal-case tracking-normal opacity-80">
+              A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.
+            </p>
             <div className="w-[1px] h-12 md:h-16 bg-white/20 relative overflow-hidden">
                 <div id="start-line" className="absolute top-0 left-0 w-full h-full bg-white"></div>
             </div>

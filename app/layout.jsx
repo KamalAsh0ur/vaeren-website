@@ -17,14 +17,14 @@ const fontSystem = Outfit({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://vaeren.vercel.app'),
-  title: 'Vaeren Studios | Luxury Egyptian Streetwear & Architectural Fashion',
-  description: 'Designed in Cairo. Less noise. More identity. Vaeren Studios explores the space between structure and instinct through limited-quantity, architectural streetwear.',
-  keywords: ['Vaeren Studios', 'Egyptian Streetwear', 'Cairo Fashion', 'Luxury Streetwear', 'Architectural Fashion', 'Minimalist Clothing'],
+  metadataBase: new URL('https://vaerenstudios.com'),
+  title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
+  description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
+  keywords: ['Vaeren Studios', 'Creative Studio', 'Streetwear Design', 'Campaign Direction', 'Fashion Collaboration', 'Apparel Development'],
   openGraph: {
-    title: 'Vaeren Studios | Architectural Fashion',
-    description: 'Less noise. More identity. Explore the latest drop designed in Cairo.',
-    url: 'https://vaeren.vercel.app',
+    title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
+    description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
+    url: 'https://vaerenstudios.com',
     siteName: 'Vaeren Studios',
     images: [
       {
@@ -39,8 +39,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaeren Studios',
-    description: 'BEYOND THE CODE. LESS NOISE. MORE IDENTITY.',
+    title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
+    description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
     images: ['/og-image.png'],
   },
 };

@@ -44,7 +44,7 @@ export default function ContactForm() {
     return (
       <div className="w-full max-w-2xl mx-auto text-center p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
         <h3 className="type-h3 mb-4">Request Sent.</h3>
-        <p className="type-body text-[var(--color-vaeren-ash)]">We'll review your brief and get back to you shortly.</p>
+        <p className="type-body text-[var(--color-vaeren-ash)]">We'll review your brief and get back to you within 48 hours.</p>
         <button 
           onClick={() => setStatus('idle')}
           className="mt-8 text-sm uppercase tracking-widest text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4"
@@ -89,6 +89,7 @@ export default function ContactForm() {
           name="project"
           className="bg-black border-b border-white/20 p-2 text-white focus:outline-none focus:border-white transition-colors appearance-none rounded-none"
         >
+          <option value="">Not Sure Yet / Let's Discuss</option>
           <option value="design">Design Collaboration</option>
           <option value="campaign">Campaign / Art Direction</option>
           <option value="full">Full Partnership</option>
@@ -112,7 +113,7 @@ export default function ContactForm() {
         <div className="text-red-400 type-meta mt-2">There was a problem sending your message. Please try again or use the email link.</div>
       )}
 
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-8 border-t border-white/10 pt-8">
         <MagneticElement strength={0.2}>
           <button 
             type="submit" 
@@ -123,6 +124,13 @@ export default function ContactForm() {
             {status === 'submitting' ? 'Sending...' : 'Submit Inquiry'} <span className="arrow ml-2">&rarr;</span>
           </button>
         </MagneticElement>
+
+        <div className="text-center md:text-left flex flex-col gap-1">
+          <span className="type-meta text-[var(--color-vaeren-ash)]">Not ready for a full project?</span>
+          <a href="https://www.instagram.com/vaeren.studios/" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] underline underline-offset-4 hover:text-[var(--color-vaeren-bone)] transition-colors inline-block" data-cursor-text="FOLLOW">
+            Follow the build on Instagram &rarr;
+          </a>
+        </div>
       </div>
     </form>
   );
