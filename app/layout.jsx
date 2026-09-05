@@ -61,6 +61,22 @@ export default function RootLayout({ children }) {
 
         {children}
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Vaeren Studios",
+              "url": "https://vaerenstudios.com",
+              "logo": "https://vaerenstudios.com/icon.png",
+              "description": "A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.",
+              "sameAs": [
+                "https://www.instagram.com/vaeren.studios/"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

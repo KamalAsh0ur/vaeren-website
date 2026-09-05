@@ -125,8 +125,13 @@ export default function ContactForm() {
           </button>
         </MagneticElement>
 
-        <div className="text-center md:text-left flex flex-col gap-1">
-          <span className="type-meta text-[var(--color-vaeren-ash)]">Not ready for a full project?</span>
+        <div className="text-center md:text-left flex flex-col gap-2">
+          <span className="type-meta text-[var(--color-vaeren-ash)]">Prefer to chat directly?</span>
+          <a href="https://wa.me/201234567890?text=I'm%20interested%20in%20collaborating%20with%20Vaeren%20Studios" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] underline underline-offset-4 hover:text-[var(--color-vaeren-bone)] transition-colors inline-block" data-cursor-text="CHAT">
+            Message on WhatsApp &rarr;
+          </a>
+          
+          <span className="type-meta text-[var(--color-vaeren-ash)] mt-2">Not ready for a full project?</span>
           <a href="https://www.instagram.com/vaeren.studios/" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] underline underline-offset-4 hover:text-[var(--color-vaeren-bone)] transition-colors inline-block" data-cursor-text="FOLLOW">
             Follow the build on Instagram &rarr;
           </a>
