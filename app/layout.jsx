@@ -1,0 +1,60 @@
+import { Cormorant_Garamond, Jost } from 'next/font/google';
+import './globals.css';
+
+// Display font for collection titles, hero statements, major navigation
+const fontDisplay = Cormorant_Garamond({ 
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+// Text/System font for functional UI
+const fontSystem = Jost({
+  subsets: ['latin'],
+  variable: '--font-system',
+  weight: ['300', '400', '500'],
+});
+
+export const metadata = {
+  title: 'Vaeren Studios | Luxury Egyptian Streetwear & Architectural Fashion',
+  description: 'Designed in Cairo. Less noise. More identity. Vaeren Studios explores the space between structure and instinct through limited-quantity, architectural streetwear.',
+  keywords: ['Vaeren Studios', 'Egyptian Streetwear', 'Cairo Fashion', 'Luxury Streetwear', 'Architectural Fashion', 'Minimalist Clothing'],
+  openGraph: {
+    title: 'Vaeren Studios | Architectural Fashion',
+    description: 'Less noise. More identity. Explore the latest drop designed in Cairo.',
+    url: 'https://vaerenstudios.com',
+    siteName: 'Vaeren Studios',
+    images: [
+      {
+        url: '/drop1/shot1.jpg', 
+        width: 1200,
+        height: 630,
+        alt: 'Vaeren Studios Look 01',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vaeren Studios',
+    description: 'BEYOND THE CODE. LESS NOISE. MORE IDENTITY.',
+    images: ['/drop1/shot1.jpg'],
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={`${fontDisplay.variable} ${fontSystem.variable} antialiased scroll-smooth`}>
+      <body suppressHydrationWarning className="bg-[var(--color-vaeren-void)] text-[var(--color-vaeren-bone)] selection:bg-[var(--color-vaeren-concrete)] selection:text-[var(--color-vaeren-void)] cursor-none">
+        {children}
+      </body>
+    </html>
+  );
+}
