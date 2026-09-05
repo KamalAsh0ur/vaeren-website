@@ -24,43 +24,55 @@ export default function CanvasSequence({ children }) {
   
   useEffect(() => {
     const video = videoRef.current;
-    
-    // Attempt to preload and pause the video for scrubbing
+
+    // Preload the video fully for scrubbing — no autoplay
     video.load();
     video.pause();
+    // iOS Safari requires at least one seek before scrubbing is allowed
+    video.currentTime = 0.001;
 
-    // Workaround for iOS Safari to allow programmatic scrubbing
-    video.currentTime = 0.01;
+    // RAF-throttled scrubbing: batch all currentTime writes into one per frame
+    // to prevent multiple decoder seeks per GSAP tick causing jank
+    let pendingTime = null;
+    let rafId = null;
+
+    const flushSeek = () => {
+      if (pendingTime !== null && video.readyState >= 2) {
+        video.currentTime = pendingTime;
+        pendingTime = null;
+      }
+      rafId = null;
+    };
 
     const trigger = ScrollTrigger.create({
-      trigger: '#sequence-spacer', 
+      trigger: '#sequence-spacer',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 0.5,
+      scrub: 0.3,
       onUpdate: (self) => {
-        if (video.duration && !isNaN(video.duration)) {
-          // Scrub video based on progress
-          video.currentTime = self.progress * video.duration;
-        }
-        
-        // Depth Cross-Fade transition in the last 15% of scroll
+        if (!video.duration || isNaN(video.duration)) return;
+
+        // Queue the seek — RAF collapses rapid ticks into one decode per frame
+        pendingTime = self.progress * video.duration;
+        if (!rafId) rafId = requestAnimationFrame(flushSeek);
+
+        // Depth cross-fade in the last 15% of scroll
         if (self.progress > 0.85) {
-            const depthProgress = (self.progress - 0.85) / 0.15; // 0 to 1
-            const scale = 1 - (0.1 * depthProgress);
-            const opacity = 1 - depthProgress;
-            video.style.transform = `scale(${scale})`;
-            video.style.opacity = Math.max(0, opacity);
+          const t = (self.progress - 0.85) / 0.15;
+          video.style.transform = `scale(${1 - 0.1 * t})`;
+          video.style.opacity = Math.max(0, 1 - t);
         } else {
-            video.style.transform = `scale(1)`;
-            video.style.opacity = 1;
+          video.style.transform = 'scale(1)';
+          video.style.opacity = '1';
         }
-      }
+      },
     });
 
     return () => {
       trigger.kill();
+      if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [isMobile]); // Re-run when video source changes
+  }, [isMobile]);
 
   return (
     <div ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden">
