@@ -122,8 +122,8 @@ export default function ProjectLayout({ project }) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 items-start">
           
           <div className="parallax-slow md:col-span-5 md:col-start-1 md:mt-32 z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-             <div className="image-reveal-container overflow-hidden w-full aspect-[3/4]">
-                 <img src={project.sections.concept.image} alt={project.sections.concept.title} className="image-reveal-inner w-full h-full object-cover opacity-90" />
+             <div className="image-reveal-container overflow-hidden w-full">
+                 <img src={project.sections.concept.image} alt={project.sections.concept.title} className="image-reveal-inner w-full h-auto object-contain opacity-90" />
              </div>
              <div className="reveal-item mt-6">
                  <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">{project.sections.concept.title}</div>
@@ -154,7 +154,7 @@ export default function ProjectLayout({ project }) {
              {project.sections.design && (
                <div className="parallax-fast" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
                    <div className="image-reveal-container overflow-hidden w-[85%] mx-auto">
-                       <img src={project.sections.design.image} alt={project.sections.design.title} className="image-reveal-inner w-full h-auto object-cover opacity-90" />
+                       <img src={project.sections.design.image} alt={project.sections.design.title} className="image-reveal-inner w-full h-auto object-contain opacity-90" />
                    </div>
                    <div className="reveal-item mt-6 text-center">
                        <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">{project.sections.design.title}</div>
@@ -166,8 +166,8 @@ export default function ProjectLayout({ project }) {
              )}
              {project.sections.world && (
                <div className="parallax-medium" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-                   <div className="image-reveal-container overflow-hidden w-full aspect-[3/4]">
-                       <img src={project.sections.world.image} alt={project.sections.world.title} className="image-reveal-inner w-full h-full object-cover opacity-90" />
+                   <div className="image-reveal-container overflow-hidden w-full">
+                       <img src={project.sections.world.image} alt={project.sections.world.title} className="image-reveal-inner w-full h-auto object-contain opacity-90" />
                    </div>
                    <div className="reveal-item mt-6 text-right">
                        <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">{project.sections.world.title}</div>
