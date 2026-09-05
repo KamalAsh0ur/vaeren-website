@@ -10,9 +10,9 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('submitting');
     
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID || 'moeqnakl';
     if (!formspreeId) {
-      console.error('NEXT_PUBLIC_FORMSPREE_ID is missing');
+      console.error('Formspree ID is missing');
       setStatus('error');
       return;
     }
