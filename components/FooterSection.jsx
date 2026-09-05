@@ -51,8 +51,6 @@ export default function FooterSection() {
         </div>
 
         <div className="mt-16 flex flex-col md:flex-row gap-6 md:gap-12 items-center type-meta text-[var(--color-vaeren-ash)]">
-            <span>{EMAIL}</span>
-            <span className="hidden md:inline">·</span>
             <a 
               href="https://www.instagram.com/vaeren.studios/" 
               target="_blank" 

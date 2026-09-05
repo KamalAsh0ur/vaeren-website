@@ -125,14 +125,19 @@ export default function ContentSection() {
           <h1 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] text-center">Structure <br/> & Comfort</h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-0 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 items-start">
           
           {/* Parallax Image 1 (Left Column) */}
           <div className="parallax-slow md:col-span-5 md:col-start-1 md:mt-32 z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
              <div className="image-reveal-container overflow-hidden w-full aspect-[3/4]">
                  <img src="/drop1/shot1.jpg" alt="Vaeren Studios Case Study 01 - Idea" className="image-reveal-inner w-full h-full object-cover opacity-90" />
              </div>
-             <div className="reveal-item type-meta text-[var(--color-vaeren-ash)] mt-4">01 THE IDEA</div>
+             <div className="reveal-item mt-6">
+                 <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">01 THE IDEA</div>
+                 <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80 mb-4 max-w-sm">
+                   We started with a simple premise: how do we translate the permanence of Brutalist architecture into an everyday garment without sacrificing comfort?
+                 </p>
+             </div>
           </div>
 
           {/* Center Anchor: Reel (Overlaps Left) */}
@@ -159,13 +164,26 @@ export default function ContentSection() {
                  <div className="image-reveal-container overflow-hidden w-[85%] mx-auto">
                      <img src="/drop1/shot2.jpg" alt="Vaeren Studios Case Study 01 - Design" className="image-reveal-inner w-full h-auto object-cover opacity-90" />
                  </div>
-                 <div className="reveal-item type-meta text-[var(--color-vaeren-ash)] mt-4 text-center">02 THE DESIGN</div>
+                 <div className="reveal-item mt-6 text-center">
+                     <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">02 THE DESIGN</div>
+                     <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80 mb-4 max-w-sm mx-auto">
+                       Heavyweight custom-milled cotton, engineered seams, and a silhouette designed to hold its shape completely independently of the wearer.
+                     </p>
+                 </div>
              </div>
              <div className="parallax-medium" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
                  <div className="image-reveal-container overflow-hidden w-full aspect-[3/4]">
                      <img src="/drop1/shot3.jpg" alt="Vaeren Studios Case Study 01 - World" className="image-reveal-inner w-full h-full object-cover opacity-90" />
                  </div>
-                 <div className="reveal-item type-meta text-[var(--color-vaeren-ash)] mt-4 text-right">03 THE WORLD</div>
+                 <div className="reveal-item mt-6 text-right">
+                     <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">03 THE WORLD</div>
+                     <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80 mb-4 max-w-sm ml-auto">
+                       The visual identity and campaign were shot in stark, natural environments to contrast the rigid geometry of the clothing.
+                     </p>
+                     <a href="#collaboration" className="inline-block mt-2 type-meta uppercase tracking-widest text-white border-b border-white/30 hover:border-white transition-colors pb-1">
+                       View Campaign
+                     </a>
+                 </div>
              </div>
           </div>
 

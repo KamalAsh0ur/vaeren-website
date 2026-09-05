@@ -42,20 +42,25 @@ export default function PhilosophySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black flex flex-col justify-center p-4 md:p-12 relative z-20 overflow-hidden">
-      <div className="w-full max-w-[1400px] mx-auto flex flex-col items-center md:items-start text-center md:text-left pt-32 pb-16 md:pb-32">
-        <h2 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] mb-12 w-full md:w-[80%] uppercase leading-[1.1]">
-          Don't Make What <br className="hidden md:block" /> Already Exists.
-        </h2>
-        
-        <div className="flex flex-col md:flex-row gap-8 md:gap-32 w-full mt-8 md:mt-16">
-            <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-1/3 text-lg leading-relaxed">
-              Streetwear moves quickly. Vaeren exists to challenge repetition. We collaborate with brands to create clothing, campaigns, and visual identities that feel new, specific, and unmistakably theirs.
-            </div>
-            
-            <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-1/3 text-lg leading-relaxed">
-              The objective isn't simply to make something beautiful. It's to make something people remember.
-            </div>
+    <section ref={sectionRef} className="relative z-20 overflow-hidden">
+      {/* Gradient veil: dissolves from transparent (showing hero video) to solid black */}
+      <div className="h-[50vh] bg-gradient-to-b from-transparent to-black" />
+      
+      <div className="bg-black p-4 md:p-12">
+        <div className="w-full max-w-[1400px] mx-auto text-center md:text-left pb-16 md:pb-32">
+          <h2 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] mb-12 md:mb-20 w-full uppercase leading-[1.1]">
+            Don't Make What <br className="hidden md:block" /> Already Exists.
+          </h2>
+          
+          <div className="flex flex-col md:flex-row gap-8 md:justify-between">
+              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-[38%] text-lg leading-relaxed">
+                Streetwear moves quickly. Vaeren exists to challenge repetition. We collaborate with brands to create clothing, campaigns, and visual identities that feel new, specific, and unmistakably theirs.
+              </div>
+              
+              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-[38%] text-lg leading-relaxed md:text-right">
+                The objective isn't simply to make something beautiful. It's to make something people remember.
+              </div>
+          </div>
         </div>
       </div>
     </section>

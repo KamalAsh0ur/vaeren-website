@@ -37,6 +37,11 @@ export default function CanvasSequence({ children }) {
     const render = () => {
       const frameIndex = Math.floor(frameState.frame);
       const img = images[frameIndex];
+      
+      // Enforce high-quality upscaling for retina/high-DPR screens
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+
       if (img && img.complete && img.naturalWidth > 0) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -128,8 +133,20 @@ export default function CanvasSequence({ children }) {
       <canvas 
         ref={canvasRef} 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover z-0"
-        style={{ willChange: 'transform, opacity', objectPosition: 'center center' }}
+        style={{ 
+          willChange: 'transform, opacity', 
+          objectPosition: 'center center',
+          filter: 'contrast(1.05) saturate(1.15) brightness(0.95)',
+        }}
       />
+      {/* Cinematic Film Grain Overlay to mask compression artifacts */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.08] z-0 mix-blend-overlay" 
+        style={{ 
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")',
+          backgroundRepeat: 'repeat'
+        }}
+      ></div>
       {children}
     </div>
   );

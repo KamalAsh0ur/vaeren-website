@@ -38,7 +38,7 @@ export default function OverlayUI() {
       { id: '#text-origin', start: 0, end: 2000 },
       { id: '#text-movement', start: 2000, end: 4000 },
       { id: '#text-transformation', start: 4000, end: 6000 },
-      { id: '#text-collection', start: 6000, end: 8000 },
+      { id: '#text-collection', start: 6000, end: 7500 },
     ];
 
     phases.forEach(phase => {
@@ -127,16 +127,16 @@ export default function OverlayUI() {
 
   return (
     <>
-      <div ref={overlayRef} className="absolute inset-0 pointer-events-none flex flex-col justify-between p-4 md:p-12 z-10 text-[var(--color-vaeren-bone)]">
+      <div ref={overlayRef} className="absolute inset-0 pointer-events-none flex flex-col justify-between p-4 md:px-12 md:py-10 z-10 text-[var(--color-vaeren-bone)] opacity-80">
         
         {/* Navigation Layer - Minimal */}
-        <header className="flex justify-between items-start pointer-events-auto">
+        <header className="flex justify-between items-center pointer-events-auto">
           <div className="flex items-center">
               <MagneticElement strength={0.3}>
                   <img src="/logo.png" alt="Vaeren Studios" className="h-6 object-contain" />
               </MagneticElement>
           </div>
-          <nav className="flex items-center space-x-6 md:space-x-12 type-meta uppercase text-[var(--color-vaeren-concrete)]">
+          <nav className="flex items-center space-x-6 md:space-x-12 type-meta uppercase text-[var(--color-vaeren-concrete)] md:-mt-2 md:-mr-4">
             <div className="hidden md:block">
               <MagneticElement strength={0.4}>
                   <a href="#work" className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="WORK">Work</a>
@@ -164,40 +164,40 @@ export default function OverlayUI() {
         <div className="flex-1 w-full h-full relative">
           
           {/* Starting Screen */}
-          <div id="start-screen" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full text-center">
-            <h1 className="type-h1 mb-4 tracking-[0.1em] opacity-90">VAEREN STUDIOS</h1>
-            <h2 className="type-meta text-[var(--color-vaeren-bone)] mb-6 tracking-[0.3em] uppercase opacity-75">WE CREATE WITH STREETWEAR.</h2>
+          <div id="start-screen" className="absolute left-1/2 top-[75%] md:top-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full text-center px-4">
+            <h1 className="type-h2 mb-4 tracking-[0.2em] opacity-100">VAEREN STUDIOS</h1>
+            <h2 className="type-body text-white mb-6 tracking-[0.2em] uppercase opacity-90">We Create With Streetwear.</h2>
             <div className="w-[1px] h-12 md:h-16 bg-white/20 relative overflow-hidden">
                 <div id="start-line" className="absolute top-0 left-0 w-full h-full bg-white"></div>
             </div>
           </div>
 
           {/* Origin - Content RIGHT (Desktop) / CENTER (Mobile) */}
-          <div id="text-origin" className="absolute left-1/2 -translate-x-1/2 top-[70%] w-11/12 flex flex-col items-center md:left-auto md:-translate-x-0 md:right-[5%] md:top-[35%] md:items-end md:w-1/3">
+          <div id="text-origin" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3 drop-shadow-xl">
             <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Design → Concept</h2>
-            <p className="type-body text-[var(--color-vaeren-concrete)] text-center md:text-right stagger-item opacity-0">
+            <p className="type-body text-white text-center md:text-right stagger-item opacity-0">
               We don't just make visuals for brands. We create with them.
             </p>
           </div>
 
           {/* Movement - Content LEFT (Desktop) / CENTER (Mobile) */}
-          <div id="text-movement" className="absolute left-1/2 -translate-x-1/2 top-[75%] w-11/12 flex flex-col items-center md:-translate-x-0 md:left-[5%] md:top-[40%] md:items-start md:w-1/3">
+          <div id="text-movement" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:-translate-x-0 md:left-[5%] md:top-[80%] md:items-start md:w-1/3 drop-shadow-xl">
             <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-left">Collaboration → World</h2>
-            <p className="type-body text-[var(--color-vaeren-concrete)] text-center md:text-left stagger-item opacity-0">
+            <p className="type-body text-white text-center md:text-left stagger-item opacity-0">
               Taking an ordinary clothing idea and pushing it into something unexpected, recognizable, and difficult to replicate.
             </p>
           </div>
 
           {/* Transformation - Content RIGHT (Desktop) / CENTER (Mobile) */}
-          <div id="text-transformation" className="absolute left-1/2 -translate-x-1/2 top-[70%] w-11/12 flex flex-col items-center md:left-auto md:-translate-x-0 md:right-[5%] md:top-[50%] md:items-end md:w-1/3">
+          <div id="text-transformation" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3 drop-shadow-xl">
             <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Visual World → Campaign</h2>
-            <p className="type-body text-[var(--color-vaeren-concrete)] text-center md:text-right stagger-item opacity-0">
+            <p className="type-body text-white text-center md:text-right stagger-item opacity-0">
               A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.
             </p>
           </div>
 
           {/* Collection - Centered (Moved down on mobile) */}
-          <div id="text-collection" className="absolute left-1/2 top-[75%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center w-11/12 md:w-full">
+          <div id="text-collection" className="absolute left-1/2 top-[78%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center w-10/12 md:w-full px-4 md:px-0">
             <h2 className="type-h1 mb-8 stagger-item opacity-0">Start a Collaboration</h2>
             <div className="stagger-item opacity-0 pointer-events-auto flex flex-col md:flex-row gap-4">
                 <MagneticElement strength={0.3}>
@@ -214,8 +214,8 @@ export default function OverlayUI() {
           </div>
         </div>
         
-        <footer className="flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)]">
-          <div>Creative Studio</div>
+        <footer className="flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)] gap-2">
+          <div className="shrink-0">Creative Studio</div>
           <div className="flex flex-col items-center gap-2">
               <MagneticElement strength={0.4}>
                   <a 
@@ -230,7 +230,7 @@ export default function OverlayUI() {
                   </a>
               </MagneticElement>
           </div>
-          <div className="text-right">Cairo, Egypt <br/> Estd. 2026</div>
+          <div className="text-right shrink-0">Cairo, Egypt <br/> Estd. 2026</div>
         </footer>
       </div>
 

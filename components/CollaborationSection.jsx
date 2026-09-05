@@ -65,30 +65,28 @@ export default function CollaborationSection() {
   ];
 
   return (
-    <section id="collaboration" ref={sectionRef} className="bg-[var(--color-vaeren-bone)] text-black flex flex-col justify-center p-4 md:p-12 relative z-20 overflow-hidden py-32 scroll-mt-20">
+    <section id="collaboration" ref={sectionRef} className="bg-[var(--color-vaeren-bone)] text-black p-4 md:p-12 relative z-20 overflow-hidden py-24 md:py-32 scroll-mt-20">
       <div className="w-full max-w-[1400px] mx-auto">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-32 items-start">
-            
-            {/* Header */}
-            <div className="w-full md:w-1/3">
-                <h2 className="reveal-item type-h1 leading-[1.1] mb-6">Collaboration <br/> Model</h2>
-                <p className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg">
-                    We do not operate as a rigid agency. We are creative partners. Here is how we integrate with brands.
-                </p>
-            </div>
-
-            {/* Grid */}
-            <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                {options.map((opt) => (
-                    <div key={opt.id} className="reveal-item flex flex-col border-t border-black/20 pt-6">
-                        <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">Option {opt.id}</div>
-                        <h3 className="type-h3 mb-4">{opt.title}</h3>
-                        <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80">{opt.description}</p>
-                    </div>
-                ))}
-            </div>
-
+        
+        {/* Header — full width, stacked above the grid */}
+        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <h2 className="reveal-item type-h1 leading-[1.1]">Collaboration <br/> Model</h2>
+            <p className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg md:max-w-md md:text-right">
+                We do not operate as a rigid agency. We are creative partners. Here is how we integrate with brands.
+            </p>
         </div>
+
+        {/* Options Grid — 2x2 on desktop, stacked on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 md:gap-y-16">
+            {options.map((opt) => (
+                <div key={opt.id} className="reveal-item flex flex-col border-t border-black/20 pt-6">
+                    <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">Option {opt.id}</div>
+                    <h3 className="type-h3 mb-4">{opt.title}</h3>
+                    <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80">{opt.description}</p>
+                </div>
+            ))}
+        </div>
+
       </div>
     </section>
   );
