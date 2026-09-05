@@ -1,4 +1,5 @@
 import { Cormorant_Garamond, Jost } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 // Display font for collection titles, hero statements, major navigation
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${fontDisplay.variable} ${fontSystem.variable} antialiased scroll-smooth`}>
       <body suppressHydrationWarning className="bg-[var(--color-vaeren-void)] text-[var(--color-vaeren-bone)] selection:bg-[var(--color-vaeren-concrete)] selection:text-[var(--color-vaeren-void)] cursor-none">
         {children}
+        <Analytics />
       </body>
     </html>
   );
