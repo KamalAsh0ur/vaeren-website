@@ -189,11 +189,7 @@ export default function ContentSection() {
 
         </div>
 
-        <div className="reveal-item mt-32 md:mt-48 flex justify-center pointer-events-auto">
-            <a href="#" className="btn-primary" data-cursor-text="WORK">
-              Explore All Projects <span className="arrow">&rarr;</span>
-            </a>
-        </div>
+
       </div>
     </section>
   );

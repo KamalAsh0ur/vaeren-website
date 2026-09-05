@@ -4,12 +4,27 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import MagneticElement from './MagneticElement';
 
+const EMAIL = 'kamal.ashour.bessa@gmail.com';
+const SUBJECT = 'Collaboration Inquiry — Vaeren Studios';
+const BODY = `Hey Vaeren,
+
+I'm reaching out because I have a project I'd like to explore with you.
+
+Brand / Project Name:
+Website or Instagram:
+What are you looking for? (Design, Creative Direction, Campaign, Full Collaboration, Other):
+
+Brief description of the idea:
+
+
+Looking forward to hearing from you.`;
+
+const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
+
 const LINKS = [
-  { name: 'Collections', href: '#' },
-  { name: 'Shop', href: '#' },
-  { name: 'Studio', href: '#' },
-  { name: 'Journal', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Work', href: '#work' },
+  { name: 'Collaboration', href: '#collaboration' },
+  { name: 'Contact', href: MAILTO_HREF },
 ];
 
 export default function MenuOverlay({ isOpen, onClose }) {

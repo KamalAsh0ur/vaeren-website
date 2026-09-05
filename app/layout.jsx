@@ -17,21 +17,21 @@ const fontSystem = Jost({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://vaerenstudios.com'),
+  metadataBase: new URL('https://vaeren.vercel.app'),
   title: 'Vaeren Studios | Luxury Egyptian Streetwear & Architectural Fashion',
   description: 'Designed in Cairo. Less noise. More identity. Vaeren Studios explores the space between structure and instinct through limited-quantity, architectural streetwear.',
   keywords: ['Vaeren Studios', 'Egyptian Streetwear', 'Cairo Fashion', 'Luxury Streetwear', 'Architectural Fashion', 'Minimalist Clothing'],
   openGraph: {
     title: 'Vaeren Studios | Architectural Fashion',
     description: 'Less noise. More identity. Explore the latest drop designed in Cairo.',
-    url: 'https://vaerenstudios.com',
+    url: 'https://vaeren.vercel.app',
     siteName: 'Vaeren Studios',
     images: [
       {
         url: '/og-image.png', 
         width: 1200,
         height: 630,
-        alt: 'Vaeren Studios Creative Agency',
+        alt: 'Vaeren Studios — Creative Partners for Streetwear Brands',
       },
     ],
     locale: 'en_US',
