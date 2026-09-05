@@ -27,10 +27,10 @@ export const metadata = {
     siteName: 'Vaeren Studios',
     images: [
       {
-        url: '/drop1/shot1.jpg', 
+        url: '/og-image.png', 
         width: 1200,
         height: 630,
-        alt: 'Vaeren Studios Look 01',
+        alt: 'Vaeren Studios Creative Agency',
       },
     ],
     locale: 'en_US',
@@ -40,7 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Vaeren Studios',
     description: 'BEYOND THE CODE. LESS NOISE. MORE IDENTITY.',
-    images: ['/drop1/shot1.jpg'],
+    images: ['/og-image.png'],
   },
 };
 
