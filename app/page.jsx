@@ -2,7 +2,7 @@ import CanvasSequence from '../components/CanvasSequence';
 import OverlayUI from '../components/OverlayUI';
 import Cursor from '../components/Cursor';
 import PhilosophySection from '../components/PhilosophySection';
-import ContentSection from '../components/ContentSection';
+import SelectedWorkSection from '../components/SelectedWorkSection';
 import CollaborationSection from '../components/CollaborationSection';
 import SocialSection from '../components/SocialSection';
 import FooterSection from '../components/FooterSection';
@@ -27,7 +27,7 @@ export default function Home() {
       </div>
 
       {/* Case Studies / Work Portfolio */}
-      <ContentSection />
+      <SelectedWorkSection />
 
       {/* Collaboration Models */}
       <CollaborationSection />
