@@ -214,15 +214,15 @@ export default function OverlayUI() {
           </div>
         </div>
         
-        <footer className="flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)] gap-2">
-          <div className="shrink-0">Creative Studio</div>
-          <div className="flex flex-col items-center gap-2">
+        <footer className="flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)] gap-2 w-full">
+          <div className="flex-1 text-left shrink-0">Creative Studio</div>
+          <div className="shrink-0 flex flex-col items-center justify-end pb-1">
               <MagneticElement strength={0.4}>
                   <a 
                     href="https://www.instagram.com/vaeren.studios/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover:text-[var(--color-vaeren-bone)] transition-colors min-h-[48px] min-w-[48px] flex items-center justify-center underline underline-offset-4"
+                    className="hover:text-[var(--color-vaeren-bone)] transition-colors min-h-[32px] min-w-[48px] flex items-center justify-center underline underline-offset-4"
                     aria-label="Follow us on Instagram"
                     data-cursor-text="FOLLOW"
                   >
@@ -230,7 +230,7 @@ export default function OverlayUI() {
                   </a>
               </MagneticElement>
           </div>
-          <div className="text-right shrink-0">Cairo, Egypt <br/> Estd. 2026</div>
+          <div className="flex-1 text-right shrink-0">Cairo, Egypt <br/> Estd. 2026</div>
         </footer>
       </div>
 
