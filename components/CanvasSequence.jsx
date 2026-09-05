@@ -22,6 +22,7 @@ export default function CanvasSequence({ children }) {
     const context = canvas.getContext('2d');
     const container = containerRef.current;
     const isMobile = window.innerWidth < 768;
+    const dpr = window.devicePixelRatio || 1;
     
     // Set responsive bounds
     const frameCount = isMobile ? 192 : 240;
@@ -29,8 +30,9 @@ export default function CanvasSequence({ children }) {
       ? `/hero-frames-mobile-webp/frame_${String(index).padStart(4, '0')}.webp`
       : `/hero-frames-webp/frame_${String(index).padStart(4, '0')}.webp`;
     
-    canvas.width = isMobile ? 1080 : 1920;
-    canvas.height = isMobile ? 1920 : 1080;
+    // Multiply canvas resolution by DPR for retina-crisp rendering
+    canvas.width = (isMobile ? 1080 : 1920) * dpr;
+    canvas.height = (isMobile ? 1920 : 1080) * dpr;
 
     const frameState = { frame: 1 };
     
