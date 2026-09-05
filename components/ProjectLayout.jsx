@@ -150,6 +150,20 @@ export default function ProjectLayout({ project }) {
             </div>
           )}
 
+          {project.sections.document && !project.sections.reel && (
+            <div className="md:col-span-4 md:col-start-4 md:mt-64 relative w-full flex flex-col items-center justify-center z-10" style={{ transform: 'translateZ(0)' }}>
+               <a href={project.sections.document} target="_blank" rel="noopener noreferrer" className="btn-secondary w-full" data-cursor-text="VIEW">
+                 <span>VIEW TECH PACK</span>
+                 <svg className="arrow w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                 </svg>
+               </a>
+               <p className="type-meta text-[var(--color-vaeren-ash)] mt-6 text-center max-w-xs opacity-70">
+                 Complete production technical package and grading rules available for review.
+               </p>
+            </div>
+          )}
+
           <div className="md:col-span-5 md:col-start-8 flex flex-col gap-16 md:gap-32 md:-mt-16 z-0">
              {project.sections.design && (
                <div className="parallax-fast" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
