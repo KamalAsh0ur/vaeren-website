@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Jost } from 'next/font/google';
+import { Cormorant_Garamond, Outfit } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
@@ -10,10 +10,10 @@ const fontDisplay = Cormorant_Garamond({
 });
 
 // Text/System font for functional UI
-const fontSystem = Jost({
+const fontSystem = Outfit({
   subsets: ['latin'],
   variable: '--font-system',
-  weight: ['300', '400', '500'],
+  weight: ['300', '400', '500', '600'],
 });
 
 export const metadata = {
@@ -55,6 +55,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontSystem.variable} antialiased scroll-smooth`}>
       <body suppressHydrationWarning className="bg-[var(--color-vaeren-void)] text-[var(--color-vaeren-bone)] selection:bg-[var(--color-vaeren-concrete)] selection:text-[var(--color-vaeren-void)] cursor-none">
+        
+        {/* Global Noise Overlay */}
+        <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+
         {children}
         <Analytics />
       </body>

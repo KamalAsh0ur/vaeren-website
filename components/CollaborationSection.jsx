@@ -76,13 +76,13 @@ export default function CollaborationSection() {
             </p>
         </div>
 
-        {/* Options Grid — 2x2 on desktop, stacked on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 md:gap-y-16">
-            {options.map((opt) => (
-                <div key={opt.id} className="reveal-item flex flex-col border-t border-black/20 pt-6">
+        {/* Options Grid — 2x2 staggered on desktop, stacked on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 md:gap-y-0 relative">
+            {options.map((opt, i) => (
+                <div key={opt.id} className={`reveal-item flex flex-col border-t border-black/20 pt-6 ${i % 2 !== 0 ? 'md:mt-32' : 'md:mb-32'}`}>
                     <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">Option {opt.id}</div>
                     <h3 className="type-h3 mb-4">{opt.title}</h3>
-                    <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80">{opt.description}</p>
+                    <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80 max-w-sm">{opt.description}</p>
                 </div>
             ))}
         </div>

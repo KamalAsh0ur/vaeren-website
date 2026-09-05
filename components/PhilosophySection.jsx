@@ -47,20 +47,24 @@ export default function PhilosophySection() {
       <div className="h-[50vh] bg-gradient-to-b from-transparent to-black" />
       
       <div className="bg-black p-4 md:p-12">
-        <div className="w-full max-w-[1400px] mx-auto text-center md:text-left pb-16 md:pb-32">
-          <h2 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] mb-12 md:mb-20 w-full uppercase leading-[1.1]">
-            Don't Make What <br className="hidden md:block" /> Already Exists.
-          </h2>
+        <div className="w-full max-w-[1400px] mx-auto pb-16 md:pb-32 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-end">
           
-          <div className="flex flex-col md:flex-row gap-8 md:justify-between">
-              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-[38%] text-lg leading-relaxed">
+          <div className="md:col-span-8">
+            <h2 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] w-full uppercase leading-[1.1] md:-ml-2">
+              Don't Make What <br className="hidden lg:block" /> Already Exists.
+            </h2>
+          </div>
+          
+          <div className="md:col-span-4 flex flex-col gap-8 md:pb-3 lg:pb-6">
+              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg leading-relaxed">
                 Streetwear moves quickly. Vaeren exists to challenge repetition. We collaborate with brands to create clothing, campaigns, and visual identities that feel new, specific, and unmistakably theirs.
               </div>
               
-              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] w-full md:w-[38%] text-lg leading-relaxed md:text-right">
+              <div className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg leading-relaxed">
                 The objective isn't simply to make something beautiful. It's to make something people remember.
               </div>
           </div>
+
         </div>
       </div>
     </section>
