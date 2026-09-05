@@ -10,12 +10,18 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('submitting');
     
-    // Using Formspree for form handling. User needs to replace the action URL with their own.
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+    if (!formspreeId) {
+      console.error('NEXT_PUBLIC_FORMSPREE_ID is missing');
+      setStatus('error');
+      return;
+    }
+
     const form = e.target;
     const data = new FormData(form);
     
     try {
-      const response = await fetch('https://formspree.io/f/xvgopeev', { // Placeholder ID
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         body: data,
         headers: {

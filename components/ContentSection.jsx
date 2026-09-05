@@ -121,7 +121,7 @@ export default function ContentSection() {
       <div className="w-full max-w-[1400px] mx-auto">
         
         <div id="work" className="flex flex-col items-center mb-16 md:mb-32 scroll-mt-32">
-          <p className="reveal-item type-meta text-[var(--color-vaeren-concrete)] mb-4 tracking-[0.2em] uppercase">Selected Case Study</p>
+          <p className="reveal-item type-meta text-[var(--color-vaeren-concrete)] mb-4 tracking-[0.2em] uppercase">Drop 01 / Proof Of Concept</p>
           <h1 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] text-center">Structure <br/> & Comfort</h1>
         </div>
 

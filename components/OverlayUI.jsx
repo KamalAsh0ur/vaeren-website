@@ -166,7 +166,7 @@ export default function OverlayUI() {
           {/* Starting Screen */}
           <div id="start-screen" className="absolute left-1/2 top-[75%] md:top-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full text-center px-4">
             <h1 className="type-h2 mb-4 tracking-[0.2em] opacity-100">VAEREN STUDIOS</h1>
-            <h2 className="type-body text-white mb-6 tracking-[0.2em] uppercase opacity-90">We Create With Streetwear.</h2>
+            <h2 className="type-body text-white mb-6 tracking-[0.2em] uppercase opacity-90">Don't Make What Already Exists.</h2>
             <div className="w-[1px] h-12 md:h-16 bg-white/20 relative overflow-hidden">
                 <div id="start-line" className="absolute top-0 left-0 w-full h-full bg-white"></div>
             </div>
@@ -174,9 +174,9 @@ export default function OverlayUI() {
 
           {/* Origin - Content RIGHT (Desktop) / CENTER (Mobile) */}
           <div id="text-origin" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3 drop-shadow-xl">
-            <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Design → Concept</h2>
+            <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Building The World</h2>
             <p className="type-body text-white text-center md:text-right stagger-item opacity-0">
-              We don't just make visuals for brands. We create with them.
+              We are building the concepts we want to see. Open to collaboration with brands who want in.
             </p>
           </div>
 
