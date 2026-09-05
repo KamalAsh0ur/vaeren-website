@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@theme {
+    --color-vaeren-void: #0a0a0a;
+    --color-vaeren-bone: #f2f0ea;
+    --color-vaeren-concrete: #a6a39c;
+    --color-vaeren-ash: #676762;
+    --color-vaeren-earth: #7a6a56;
+    
+    --font-display: var(--font-display);
+    --font-system: var(--font-system);
+}
+
+:root {
+  --color-vaeren-void: #0a0a0a;
+  --color-vaeren-bone: #f2f0ea;
+  --color-vaeren-concrete: #a6a39c;
+  --color-vaeren-ash: #676762;
+  --color-vaeren-earth: #7a6a56;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scroll-phase text before GSAP initializes — prevents flash of all phases at once */
+#text-origin,
+#text-movement,
+#text-transformation,
+#text-collection {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-vaeren-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-vaeren-ash);
+}
+
+/* 
+ * TYPOGRAPHIC STYLE (from board 08) 
+ */
+.type-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 4rem); /* Fluid scaling for mobile */
+  letter-spacing: -0.02em; /* Tracking -2 */
+  line-height: 1;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .type-h1 {
+    font-size: 7.5rem; /* ~120px */
+  }
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 6vw, 2rem); /* Fluid scaling for mobile */
+  letter-spacing: 0; /* Tracking 0 */
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .type-h2 {
+    font-size: 3rem; /* ~48px */
+  }
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem; /* Scale down for mobile */
+  letter-spacing: 0.02em; /* Tracking 2 */
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .type-h3 {
+    font-size: 1.5rem; /* ~24px */
+  }
+}
+
+.type-body {
+  font-family: var(--font-system);
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
+  letter-spacing: 0; /* Tracking 0 */
+  line-height: 1.5;
+}
+
+.type-meta {
+  font-family: var(--font-system);
+  font-weight: 400;
+  font-size: 0.75rem; /* 12px */
+  letter-spacing: 0.02em; /* Tracking 2 */
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* 
+ * UI ELEMENTS (from board 09) 
+ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(242, 240, 234, 0.2); /* Translucent bone, no blur */
+  color: var(--color-vaeren-bone);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-system);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 260px;
+  border: 1px solid rgba(242, 240, 234, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary { cursor: none; }
+}
+.btn-primary:hover {
+  background-color: var(--color-vaeren-bone);
+  color: var(--color-vaeren-void);
+}
+.btn-primary .arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(10, 10, 10, 0.4); /* Translucent void, no blur */
+  color: var(--color-vaeren-bone);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-system);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 260px;
+  border: 1px solid rgba(242, 240, 234, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary { cursor: none; }
+}
+.btn-secondary:hover {
+  background-color: rgba(242, 240, 234, 0.1);
+  border-color: rgba(242, 240, 234, 0.4);
+}
+.btn-secondary .arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-vaeren-bone);
+  font-family: var(--font-system);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-tertiary { cursor: none; }
+}
+.btn-tertiary:hover {
+  opacity: 1;
+}
+.btn-tertiary .arrow {
+  margin-left: 8px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-tertiary:hover .arrow {
+  transform: translateX(4px);
+}
