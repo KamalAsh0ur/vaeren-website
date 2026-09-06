@@ -151,12 +151,12 @@ export default function SelectedWorkSection() {
             {/* Native Iframe for Desktop */}
             <iframe 
               src="/drop2/techpack.pdf#toolbar=0" 
-              className="w-full h-[80vh] hidden md:block" 
+              className="w-full aspect-[1.41/1] hidden md:block" 
               title="Tech Pack PDF"
             />
             {/* Rasterized Image Preview for Mobile */}
             <img 
-              src="/drop2/techpack-preview-v2.webp" 
+              src="/drop2/techpack-preview-cropped.webp" 
               alt="Tech Pack Preview" 
               className="w-full h-auto object-cover opacity-90 block md:hidden" 
             />
