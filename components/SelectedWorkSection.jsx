@@ -149,7 +149,7 @@ export default function SelectedWorkSection() {
           </div>
           
           <div className="flex justify-end border-t border-white/10 pt-6">
-            <a href="/drop2/TechPack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs" data-cursor-text="VIEW">
+            <a href="/drop2/techpack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs" data-cursor-text="VIEW">
               VIEW COMPLETE TECH PACK (PDF) &rarr;
             </a>
           </div>
