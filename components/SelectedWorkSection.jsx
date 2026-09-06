@@ -124,24 +124,24 @@ export default function SelectedWorkSection() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 mb-8">
             <div className="md:col-span-5 flex flex-col gap-4">
               <div className="relative aspect-[3/4] bg-white/5 overflow-hidden group">
-                <img src="/drop1/pattern-spec.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Pattern Spec" />
+                <img src="/drop1/pattern-spec.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Pattern Spec" />
                 <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">PATTERN GRADING</div>
               </div>
             </div>
             
             <div className="md:col-span-7 flex flex-col gap-4">
               <div className="relative aspect-video bg-white/5 overflow-hidden group">
-                <img src="/drop2/flats.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Technical Flats" />
+                <img src="/drop2/flats.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Technical Flats" />
                 <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">TECHNICAL FLATS</div>
               </div>
               
               <div className="grid grid-cols-2 gap-4 h-full">
                 <div className="relative bg-white/5 overflow-hidden group aspect-square md:aspect-auto">
-                  <img src="/drop1/pom-spec.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="POM Spec" />
+                  <img src="/drop1/pom-spec.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="POM Spec" />
                   <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">POM SPEC</div>
                 </div>
                 <div className="relative bg-white/5 overflow-hidden group aspect-square md:aspect-auto">
-                  <img src="/drop1/tech-flats.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Tech Flats" />
+                  <img src="/drop1/tech-flats.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Tech Flats" />
                   <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">CONSTRUCTION</div>
                 </div>
               </div>

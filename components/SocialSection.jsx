@@ -9,11 +9,11 @@ export default function SocialSection() {
   const trackRef = useRef(null);
   
   const images = [
-    '/social/ig1.jpg',
-    '/social/ig2.jpg',
-    '/social/ig3.jpg',
-    '/social/ig4.jpg',
-    '/social/ig5.jpg',
+    '/social/ig1.webp',
+    '/social/ig2.webp',
+    '/social/ig3.webp',
+    '/social/ig4.webp',
+    '/social/ig5.webp',
   ];
 
   useEffect(() => {

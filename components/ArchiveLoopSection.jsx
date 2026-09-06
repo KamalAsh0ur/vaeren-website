@@ -8,16 +8,16 @@ export default function ArchiveLoopSection() {
   const track2Ref = useRef(null);
   
   const drop1Images = [
-    '/drop1/shot1.jpg',
-    '/drop1/shot2.jpg',
-    '/drop1/shot3.jpg',
+    '/drop1/shot1.webp',
+    '/drop1/shot2.webp',
+    '/drop1/shot3.webp',
   ];
 
   const drop2Images = [
-    '/drop2/campaign.png',
-    '/drop2/shot1.png',
-    '/drop2/shot2.png',
-    '/drop2/shot3.png',
+    '/drop2/campaign.webp',
+    '/drop2/shot1.webp',
+    '/drop2/shot2.webp',
+    '/drop2/shot3.webp',
   ];
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function ArchiveLoopSection() {
     const anim1 = gsap.to(track1, {
       xPercent: -25,
       ease: 'none',
-      duration: 35, 
+      duration: 15, // Accelerated speed
       repeat: -1,
       force3D: true,
     });
@@ -38,7 +38,7 @@ export default function ArchiveLoopSection() {
     const anim2 = gsap.to(track2, {
       xPercent: -25,
       ease: 'none',
-      duration: 45, // Slightly different speed for parallax feel
+      duration: 20, // Accelerated speed
       repeat: -1,
       force3D: true,
     });

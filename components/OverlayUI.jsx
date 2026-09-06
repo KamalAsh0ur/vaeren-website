@@ -133,7 +133,7 @@ export default function OverlayUI() {
         <header className="flex justify-between items-center pointer-events-auto">
           <div className="flex items-center">
               <MagneticElement strength={0.3}>
-                  <img src="/logo.png" alt="Vaeren Studios" className="h-6 object-contain" />
+                  <img src="/logo.webp" alt="Vaeren Studios" className="h-6 object-contain" />
               </MagneticElement>
           </div>
           <nav className="flex items-center space-x-6 md:space-x-12 type-meta uppercase text-[var(--color-vaeren-concrete)] md:-mt-2 md:-mr-4">

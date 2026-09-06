@@ -28,7 +28,7 @@ export const metadata = {
     siteName: 'Vaeren Studios',
     images: [
       {
-        url: '/og-image.png', 
+        url: '/og-image.webp', 
         width: 1200,
         height: 630,
         alt: 'Vaeren Studios — Creative Partners for Streetwear Brands',
@@ -41,7 +41,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
     description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
-    images: ['/og-image.png'],
+    images: ['/og-image.webp'],
   },
 };
 
@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "Vaeren Studios",
               "url": "https://vaerenstudios.com",
-              "logo": "https://vaerenstudios.com/icon.png",
+              "logo": "https://vaerenstudios.com/icon.webp",
               "description": "A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.",
               "sameAs": [
                 "https://www.instagram.com/vaeren.studios/"
