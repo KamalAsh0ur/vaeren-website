@@ -8,6 +8,17 @@ import CollaborationSection from '../components/CollaborationSection';
 import SocialSection from '../components/SocialSection';
 import FooterSection from '../components/FooterSection';
 
+export const metadata = {
+  title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
+  description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
+  openGraph: {
+    title: 'Vaeren Studios | Creative Partner for Streetwear Brands',
+    description: 'A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don\'t look like everything else.',
+    url: 'https://vaeren.vercel.app',
+    images: [{ url: '/og-image.webp', width: 1200, height: 630, alt: 'Vaeren Studios' }],
+  },
+};
+
 export default function Home() {
   return (
     <main className="relative w-full bg-black min-h-screen">

@@ -9,6 +9,38 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const project = getProjectBySlug(params.slug);
+  if (!project) return {};
+
+  const title = `${project.client} × ${project.title} | Vaeren Studios`;
+  const description = project.sections?.concept?.description || `Case study for ${project.title}`;
+  
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://vaeren.vercel.app/work/${project.slug}`,
+      images: [
+        {
+          url: project.thumbnail,
+          width: 1200,
+          height: 800,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [project.thumbnail],
+    },
+  };
+}
+
 export default function ProjectPage({ params }) {
   const project = getProjectBySlug(params.slug);
 

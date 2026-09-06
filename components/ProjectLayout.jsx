@@ -33,30 +33,18 @@ export default function ProjectLayout({ project }) {
       }
     );
 
-    const imageContainers = section.querySelectorAll('.image-reveal-container');
-    imageContainers.forEach((container) => {
-      const inner = container.querySelector('.image-reveal-inner');
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
       
-      gsap.fromTo(
-        container,
-        { clipPath: 'inset(100% 0 0 0)' },
-        {
-          clipPath: 'inset(0% 0 0 0)',
-          duration: 1.5,
-          ease: 'power3.inOut',
-          scrollTrigger: {
-            trigger: container,
-            start: 'top 85%',
-          }
-        }
-      );
-      
-      if (inner) {
+      const imageContainers = section.querySelectorAll('.image-reveal-container');
+      imageContainers.forEach((container) => {
+        const inner = container.querySelector('.image-reveal-inner');
+        
         gsap.fromTo(
-          inner,
-          { scale: 1.3 },
+          container,
+          { clipPath: 'inset(100% 0 0 0)' },
           {
-            scale: 1,
+            clipPath: 'inset(0% 0 0 0)',
             duration: 1.5,
             ease: 'power3.inOut',
             scrollTrigger: {
@@ -65,11 +53,24 @@ export default function ProjectLayout({ project }) {
             }
           }
         );
-      }
-    });
+        
+        if (inner) {
+          gsap.fromTo(
+            inner,
+            { scale: 1.3 },
+            {
+              scale: 1,
+              duration: 1.5,
+              ease: 'power3.inOut',
+              scrollTrigger: {
+                trigger: container,
+                start: 'top 85%',
+              }
+            }
+          );
+        }
+      });
 
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 768px)", () => {
       gsap.to(section.querySelectorAll('.parallax-slow'), {
         y: -100,
         ease: 'none',
