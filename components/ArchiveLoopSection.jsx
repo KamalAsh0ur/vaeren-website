@@ -2,15 +2,18 @@
 
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import MagneticElement from './MagneticElement';
 
 export default function ArchiveLoopSection() {
-  const trackRef = useRef(null);
+  const track1Ref = useRef(null);
+  const track2Ref = useRef(null);
   
-  const images = [
+  const drop1Images = [
     '/drop1/shot1.jpg',
     '/drop1/shot2.jpg',
     '/drop1/shot3.jpg',
+  ];
+
+  const drop2Images = [
     '/drop2/campaign.png',
     '/drop2/shot1.png',
     '/drop2/shot2.png',
@@ -18,28 +21,56 @@ export default function ArchiveLoopSection() {
   ];
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    const track1 = track1Ref.current;
+    const track2 = track2Ref.current;
+    if (!track1 || !track2) return;
     
-    // Smooth infinite scroll to the left
-    const animation = gsap.to(track, {
-      xPercent: -50,
+    // We duplicate the arrays 4 times in the DOM, so 1 set is 25% of the total width.
+    // Moving xPercent to -25 perfectly loops 1 set.
+    const anim1 = gsap.to(track1, {
+      xPercent: -25,
       ease: 'none',
-      duration: 50, // Very slow, ambient movement
+      duration: 35, 
       repeat: -1,
       force3D: true,
     });
 
-    const handleMouseEnter = () => gsap.to(animation, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
-    const handleMouseLeave = () => gsap.to(animation, { timeScale: 1, duration: 1, ease: 'power2.out' });
+    const anim2 = gsap.to(track2, {
+      xPercent: -25,
+      ease: 'none',
+      duration: 45, // Slightly different speed for parallax feel
+      repeat: -1,
+      force3D: true,
+    });
 
-    track.addEventListener('mouseenter', handleMouseEnter);
-    track.addEventListener('mouseleave', handleMouseLeave);
+    // Optional: Reverse direction for track 2
+    // gsap.set(track2, { xPercent: -25 });
+    // const anim2 = gsap.to(track2, {
+    //   xPercent: 0,
+    //   ease: 'none',
+    //   duration: 45,
+    //   repeat: -1,
+    //   force3D: true,
+    // });
+
+    const handleMouseEnter1 = () => gsap.to(anim1, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
+    const handleMouseLeave1 = () => gsap.to(anim1, { timeScale: 1, duration: 1, ease: 'power2.out' });
+    
+    const handleMouseEnter2 = () => gsap.to(anim2, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
+    const handleMouseLeave2 = () => gsap.to(anim2, { timeScale: 1, duration: 1, ease: 'power2.out' });
+
+    track1.addEventListener('mouseenter', handleMouseEnter1);
+    track1.addEventListener('mouseleave', handleMouseLeave1);
+    track2.addEventListener('mouseenter', handleMouseEnter2);
+    track2.addEventListener('mouseleave', handleMouseLeave2);
 
     return () => {
-      animation.kill();
-      track.removeEventListener('mouseenter', handleMouseEnter);
-      track.removeEventListener('mouseleave', handleMouseLeave);
+      anim1.kill();
+      anim2.kill();
+      track1.removeEventListener('mouseenter', handleMouseEnter1);
+      track1.removeEventListener('mouseleave', handleMouseLeave1);
+      track2.removeEventListener('mouseenter', handleMouseEnter2);
+      track2.removeEventListener('mouseleave', handleMouseLeave2);
     };
   }, []);
 
@@ -51,35 +82,54 @@ export default function ArchiveLoopSection() {
         </h2>
       </div>
 
-      <div className="w-full relative flex items-center" data-cursor-text="DRAG">
-        <div ref={trackRef} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-            {/* First Set */}
-            {images.map((src, i) => (
-                <div 
-                  key={`a-${i}`} 
-                  className="w-[70vw] md:w-[25vw] aspect-[4/5] flex-shrink-0 relative overflow-hidden"
-                >
-                    <img 
-                      src={src} 
-                      alt={`Archive Image ${i + 1}`} 
-                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700 ease-out" 
-                    />
-                </div>
-            ))}
-            {/* Duplicated Set for Seamless Infinite Loop */}
-            {images.map((src, i) => (
-                <div 
-                  key={`b-${i}`} 
-                  className="w-[70vw] md:w-[25vw] aspect-[4/5] flex-shrink-0 relative overflow-hidden"
-                >
-                    <img 
-                      src={src} 
-                      alt={`Archive Image ${i + 1}`} 
-                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700 ease-out" 
-                    />
-                </div>
-            ))}
+      <div className="w-full flex flex-col gap-8 md:gap-16">
+        
+        {/* Track 1: Drop 1 */}
+        <div className="w-full relative flex items-center" data-cursor-text="DRAG">
+          <div ref={track1Ref} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+              {/* Render 4 sets of the images to guarantee enough width to loop seamlessly */}
+              {[...Array(4)].map((_, setIndex) => (
+                <React.Fragment key={`set1-${setIndex}`}>
+                  {drop1Images.map((src, i) => (
+                    <div 
+                      key={`d1-${setIndex}-${i}`} 
+                      className="h-[40vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
+                    >
+                        <img 
+                          src={src} 
+                          alt={`Drop 1 Archive ${i + 1}`} 
+                          className="h-full w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-700 ease-out" 
+                        />
+                    </div>
+                  ))}
+                </React.Fragment>
+              ))}
+          </div>
         </div>
+
+        {/* Track 2: Drop 2 */}
+        <div className="w-full relative flex items-center" data-cursor-text="DRAG">
+          <div ref={track2Ref} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+              {/* Render 4 sets of the images to guarantee enough width to loop seamlessly */}
+              {[...Array(4)].map((_, setIndex) => (
+                <React.Fragment key={`set2-${setIndex}`}>
+                  {drop2Images.map((src, i) => (
+                    <div 
+                      key={`d2-${setIndex}-${i}`} 
+                      className="h-[40vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
+                    >
+                        <img 
+                          src={src} 
+                          alt={`Drop 2 Archive ${i + 1}`} 
+                          className="h-full w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-700 ease-out" 
+                        />
+                    </div>
+                  ))}
+                </React.Fragment>
+              ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
