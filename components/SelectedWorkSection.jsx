@@ -127,6 +127,10 @@ export default function SelectedWorkSection() {
                 <img src="/drop1/pattern-spec.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Pattern Spec" />
                 <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">PATTERN GRADING</div>
               </div>
+              <div className="relative aspect-square md:aspect-auto md:h-full bg-white/5 overflow-hidden group">
+                <img src="/drop2/techpack-preview.png" className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Tech Pack Preview" />
+                <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">TECH PACK EXTRACT</div>
+              </div>
             </div>
             
             <div className="md:col-span-7 flex flex-col gap-4">
