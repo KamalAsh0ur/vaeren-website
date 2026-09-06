@@ -114,7 +114,46 @@ export default function SelectedWorkSection() {
         {/* Sequential Editorial Categories */}
         {renderCategory('DROPS', dropProjects)}
         {renderCategory('COLLABORATIONS', collabProjects)}
-        {renderCategory('DESIGN / DEVELOPMENT', designProjects)}
+        
+        {/* DESIGN / DEVELOPMENT Technical Gallery */}
+        <div className="mb-32">
+          <h3 className="type-meta text-[var(--color-vaeren-concrete)] tracking-[0.3em] uppercase border-b border-white/10 pb-4 mb-16">
+            DESIGN / DEVELOPMENT
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 mb-8">
+            <div className="md:col-span-5 flex flex-col gap-4">
+              <div className="relative aspect-[3/4] bg-white/5 overflow-hidden group">
+                <img src="/drop1/pattern-spec.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Pattern Spec" />
+                <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">PATTERN GRADING</div>
+              </div>
+            </div>
+            
+            <div className="md:col-span-7 flex flex-col gap-4">
+              <div className="relative aspect-video bg-white/5 overflow-hidden group">
+                <img src="/drop2/flats.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Technical Flats" />
+                <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">TECHNICAL FLATS</div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 h-full">
+                <div className="relative bg-white/5 overflow-hidden group aspect-square md:aspect-auto">
+                  <img src="/drop1/pom-spec.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="POM Spec" />
+                  <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">POM SPEC</div>
+                </div>
+                <div className="relative bg-white/5 overflow-hidden group aspect-square md:aspect-auto">
+                  <img src="/drop1/tech-flats.png" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Tech Flats" />
+                  <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">CONSTRUCTION</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-end border-t border-white/10 pt-6">
+            <a href="/drop2/TechPack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs" data-cursor-text="VIEW">
+              VIEW COMPLETE TECH PACK (PDF) &rarr;
+            </a>
+          </div>
+        </div>
 
       </div>
     </section>
