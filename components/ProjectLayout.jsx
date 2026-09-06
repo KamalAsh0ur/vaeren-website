@@ -181,6 +181,23 @@ export default function ProjectLayout({ project }) {
 
         </div>
 
+        {/* Optional Extra Image */}
+        {project.sections.extra && (
+           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 items-start mt-16 md:mt-32">
+             <div className="parallax-slow md:col-span-6 md:col-start-2 z-0" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+                 <div className="image-reveal-container overflow-hidden w-full">
+                     <img src={project.sections.extra.image} alt={project.sections.extra.title} className="image-reveal-inner w-full h-auto object-contain opacity-90" />
+                 </div>
+                 <div className="reveal-item mt-6">
+                     <div className="type-meta text-[var(--color-vaeren-ash)] mb-2">{project.sections.extra.title}</div>
+                     <p className="type-body text-[var(--color-vaeren-concrete)] opacity-80 mb-4 max-w-sm">
+                       {project.sections.extra.description}
+                     </p>
+                 </div>
+             </div>
+           </div>
+        )}
+
         {/* Tech Pack Download Button */}
         {project.techPack && (
           <div className="mt-32 w-full flex justify-center border-t border-white/10 pt-16">
