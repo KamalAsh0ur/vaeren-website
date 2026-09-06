@@ -147,16 +147,27 @@ export default function SelectedWorkSection() {
               </div>
             </div>
           </div>
-          <div className="mt-8 border border-white/10 bg-white/5 rounded-sm overflow-hidden block">
+          <div className="mt-8 border border-white/10 bg-white/5 rounded-sm overflow-hidden block relative group">
+            {/* Native Iframe for Desktop */}
             <iframe 
               src="/drop2/techpack.pdf#toolbar=0" 
-              className="w-full h-[50vh] md:h-[80vh]" 
+              className="w-full h-[80vh] hidden md:block" 
               title="Tech Pack PDF"
             />
+            {/* Rasterized Image Preview for Mobile */}
+            <img 
+              src="/drop2/techpack-preview.webp" 
+              alt="Tech Pack Preview" 
+              className="w-full h-auto object-cover opacity-90 block md:hidden" 
+            />
+            {/* Overlay link for Mobile to click through directly to PDF */}
+            <a href="/drop2/techpack.pdf" target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10 md:hidden">
+              <span className="sr-only">View PDF</span>
+            </a>
           </div>
 
           <div className="flex justify-between items-center border-t border-white/10 pt-6 mt-6">
-            <span className="type-meta text-white/40 text-[10px] md:text-xs">PREVIEW (NATIVE SCROLLING MAY VARY ON MOBILE)</span>
+            <span className="type-meta text-white/40 text-[10px] md:text-xs">PREVIEW (TAP IMAGE ON MOBILE TO OPEN FULL PDF)</span>
             <a href="/drop2/techpack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs ml-auto" data-cursor-text="VIEW">
               VIEW COMPLETE TECH PACK &rarr;
             </a>
