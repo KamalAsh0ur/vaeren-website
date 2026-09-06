@@ -127,10 +127,6 @@ export default function SelectedWorkSection() {
                 <img src="/drop1/pattern-spec.webp" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Pattern Spec" />
                 <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">PATTERN GRADING</div>
               </div>
-              <div className="relative aspect-square md:aspect-auto md:h-full bg-white/5 overflow-hidden group">
-                <img src="/drop2/techpack-preview.png" className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500" alt="Tech Pack Preview" />
-                <div className="absolute bottom-4 left-4 type-meta text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1 text-white/80 border border-white/10">TECH PACK EXTRACT</div>
-              </div>
             </div>
             
             <div className="md:col-span-7 flex flex-col gap-4">
@@ -151,10 +147,18 @@ export default function SelectedWorkSection() {
               </div>
             </div>
           </div>
-          
-          <div className="flex justify-end border-t border-white/10 pt-6">
-            <a href="/drop2/techpack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs" data-cursor-text="VIEW">
-              VIEW COMPLETE TECH PACK (PDF) &rarr;
+          <div className="mt-8 border border-white/10 bg-white/5 rounded-sm overflow-hidden block">
+            <iframe 
+              src="/drop2/techpack.pdf#toolbar=0" 
+              className="w-full h-[50vh] md:h-[80vh]" 
+              title="Tech Pack PDF"
+            />
+          </div>
+
+          <div className="flex justify-between items-center border-t border-white/10 pt-6 mt-6">
+            <span className="type-meta text-white/40 text-[10px] md:text-xs">PREVIEW (NATIVE SCROLLING MAY VARY ON MOBILE)</span>
+            <a href="/drop2/techpack.pdf" target="_blank" rel="noopener noreferrer" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-4 uppercase tracking-widest text-xs ml-auto" data-cursor-text="VIEW">
+              VIEW COMPLETE TECH PACK &rarr;
             </a>
           </div>
         </div>
