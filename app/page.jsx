@@ -3,6 +3,7 @@ import OverlayUI from '../components/OverlayUI';
 import Cursor from '../components/Cursor';
 import PhilosophySection from '../components/PhilosophySection';
 import SelectedWorkSection from '../components/SelectedWorkSection';
+import ArchiveLoopSection from '../components/ArchiveLoopSection';
 import CollaborationSection from '../components/CollaborationSection';
 import SocialSection from '../components/SocialSection';
 import FooterSection from '../components/FooterSection';
@@ -28,6 +29,9 @@ export default function Home() {
 
       {/* Case Studies / Work Portfolio */}
       <SelectedWorkSection />
+
+      {/* Archive Infinite Loop */}
+      <ArchiveLoopSection />
 
       {/* Collaboration Models */}
       <CollaborationSection />
