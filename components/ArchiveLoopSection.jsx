@@ -53,24 +53,32 @@ export default function ArchiveLoopSection() {
     //   force3D: true,
     // });
 
-    const handleMouseEnter1 = () => gsap.to(anim1, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
-    const handleMouseLeave1 = () => gsap.to(anim1, { timeScale: 1, duration: 1, ease: 'power2.out' });
-    
-    const handleMouseEnter2 = () => gsap.to(anim2, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
-    const handleMouseLeave2 = () => gsap.to(anim2, { timeScale: 1, duration: 1, ease: 'power2.out' });
+    const mm = gsap.matchMedia();
 
-    track1.addEventListener('mouseenter', handleMouseEnter1);
-    track1.addEventListener('mouseleave', handleMouseLeave1);
-    track2.addEventListener('mouseenter', handleMouseEnter2);
-    track2.addEventListener('mouseleave', handleMouseLeave2);
+    mm.add("(hover: hover)", () => {
+      const handleMouseEnter1 = () => gsap.to(anim1, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
+      const handleMouseLeave1 = () => gsap.to(anim1, { timeScale: 1, duration: 1, ease: 'power2.out' });
+      
+      const handleMouseEnter2 = () => gsap.to(anim2, { timeScale: 0.2, duration: 1, ease: 'power2.out' });
+      const handleMouseLeave2 = () => gsap.to(anim2, { timeScale: 1, duration: 1, ease: 'power2.out' });
+
+      track1.addEventListener('mouseenter', handleMouseEnter1);
+      track1.addEventListener('mouseleave', handleMouseLeave1);
+      track2.addEventListener('mouseenter', handleMouseEnter2);
+      track2.addEventListener('mouseleave', handleMouseLeave2);
+
+      return () => {
+        track1.removeEventListener('mouseenter', handleMouseEnter1);
+        track1.removeEventListener('mouseleave', handleMouseLeave1);
+        track2.removeEventListener('mouseenter', handleMouseEnter2);
+        track2.removeEventListener('mouseleave', handleMouseLeave2);
+      };
+    });
 
     return () => {
       anim1.kill();
       anim2.kill();
-      track1.removeEventListener('mouseenter', handleMouseEnter1);
-      track1.removeEventListener('mouseleave', handleMouseLeave1);
-      track2.removeEventListener('mouseenter', handleMouseEnter2);
-      track2.removeEventListener('mouseleave', handleMouseLeave2);
+      mm.revert();
     };
   }, []);
 
@@ -93,7 +101,7 @@ export default function ArchiveLoopSection() {
                   {drop1Images.map((src, i) => (
                     <div 
                       key={`d1-${setIndex}-${i}`} 
-                      className="h-[40vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
+                      className="h-[25vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
                     >
                         <img 
                           src={src} 
@@ -116,7 +124,7 @@ export default function ArchiveLoopSection() {
                   {drop2Images.map((src, i) => (
                     <div 
                       key={`d2-${setIndex}-${i}`} 
-                      className="h-[40vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
+                      className="h-[25vh] md:h-[50vh] flex-shrink-0 relative overflow-hidden bg-white/5"
                     >
                         <img 
                           src={src} 
