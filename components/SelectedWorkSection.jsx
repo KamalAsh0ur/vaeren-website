@@ -156,7 +156,7 @@ export default function SelectedWorkSection() {
             />
             {/* Rasterized Image Preview for Mobile */}
             <img 
-              src="/drop2/techpack-preview.webp" 
+              src="/drop2/techpack-preview-v2.webp" 
               alt="Tech Pack Preview" 
               className="w-full h-auto object-cover opacity-90 block md:hidden" 
             />
