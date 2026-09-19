@@ -48,6 +48,22 @@ export default function ContactForm({ serviceName = 'General Inquiry' }) {
             currency: 'USD'
           });
         }
+        
+        // Fire Server-Side CAPI Lead Event
+        if (typeof window !== 'undefined') {
+          fetch('/api/meta-capi', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventName: 'Lead',
+              sourceUrl: window.location.href,
+              customData: {
+                content_name: 'Project Inquiry',
+                currency: 'USD'
+              }
+            })
+          }).catch(err => console.error('CAPI proxy error:', err));
+        }
       } else {
         setStatus('error');
       }
