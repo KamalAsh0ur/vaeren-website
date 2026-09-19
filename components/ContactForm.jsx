@@ -1,10 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import MagneticElement from './MagneticElement';
 
 export default function ContactForm() {
   const [status, setStatus] = useState(''); // 'idle', 'submitting', 'success', 'error'
+  const searchParams = useSearchParams();
+  
+  const utmSource = searchParams.get('utm_source') || '';
+  const utmMedium = searchParams.get('utm_medium') || '';
+  const utmCampaign = searchParams.get('utm_campaign') || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +38,14 @@ export default function ContactForm() {
       if (response.ok) {
         setStatus('success');
         form.reset();
+        
+        // Fire Meta Pixel Lead Event
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'Lead', {
+            content_name: 'Project Inquiry',
+            currency: 'USD'
+          });
+        }
       } else {
         setStatus('error');
       }
@@ -57,6 +71,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto flex flex-col gap-6 text-left">
+      <input type="hidden" name="utm_source" value={utmSource} />
+      <input type="hidden" name="utm_medium" value={utmMedium} />
+      <input type="hidden" name="utm_campaign" value={utmCampaign} />
+      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="type-meta text-[var(--color-vaeren-ash)]">Name / Brand</label>

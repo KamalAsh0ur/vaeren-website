@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
+import ContactForm from '../ContactForm';
 
 export function ServiceHero({ hero, ctaText = "Start a project" }) {
   return (
@@ -165,21 +166,31 @@ export function DeepCaseStudy({ study }) {
 }
 
 export function ConversationalCTA({ prompt, ctaText = "Start a project" }) {
-    const EMAIL = 'kamal.ashour.bessa@gmail.com';
-    const SUBJECT = 'Collaboration Inquiry — Vaeren Studios';
-    const BODY = `Hey Vaeren,\n\nI'm reaching out because I have a project I'd like to explore with you.\n\nBrand / Project Name:\nWebsite or Instagram:\nWhat are you looking for?\n\nBrief description of the idea:\n\n\nLooking forward to hearing from you.`;
-    const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
+    const [showForm, setShowForm] = useState(false);
 
     return (
         <section id="contact-flow" className="w-full bg-[#d05c35] text-black py-32 md:py-48 px-6 md:px-12 flex flex-col items-center text-center relative z-20">
             <h2 className="type-h1 text-5xl md:text-7xl lg:text-[6rem] leading-[1.0] tracking-tight mb-16 max-w-5xl">
                 {prompt}
             </h2>
-            <a href={MAILTO_HREF} className="group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 rounded-sm overflow-hidden border border-black transition-all hover:bg-transparent hover:text-black">
-                <span className="type-meta tracking-widest uppercase text-xs md:text-sm relative z-10 font-medium">
-                    {ctaText} &rarr;
-                </span>
-            </a>
+            
+            {showForm ? (
+              <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                 <Suspense fallback={<div className="type-meta uppercase tracking-widest text-xs">Loading form...</div>}>
+                   <ContactForm />
+                 </Suspense>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setShowForm(true)} 
+                className="group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 rounded-sm overflow-hidden border border-black transition-all hover:bg-transparent hover:text-black"
+              >
+                  <span className="type-meta tracking-widest uppercase text-xs md:text-sm relative z-10 font-medium">
+                      {ctaText} &rarr;
+                  </span>
+              </button>
+            )}
+
             <div className="mt-24 flex flex-col md:flex-row gap-6 md:gap-12 items-center type-meta tracking-widest text-black/60 text-xs">
                 <a href="https://www.instagram.com/vaeren.studios/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors underline underline-offset-4">
                     @vaeren.studios
