@@ -11,7 +11,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const service = services[params.slug];
+  const { slug } = await params;
+  const service = services[slug];
   
   if (!service) {
     return {
@@ -63,8 +64,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function ServicePage({ params }) {
-  const service = services[params.slug];
+export default async function ServicePage({ params }) {
+  const { slug } = await params;
+  const service = services[slug];
 
   if (!service) {
     notFound();
