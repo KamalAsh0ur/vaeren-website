@@ -49,7 +49,7 @@ export default function CollaborationSection() {
       subtitle: "You have the brand.\nWe create the product.",
       description: "We work with you to develop the clothing concept — from silhouettes and details to the design language, materials, and visual decisions that make the product feel unmistakably yours.",
       footer: "Brand → Concept → Product",
-      image: "/collaboration/01.png",
+      image: "/drop2/flats.webp",
       span: "col-span-1 lg:col-span-2",
       slug: "design-with-us"
     },
@@ -59,7 +59,7 @@ export default function CollaborationSection() {
       subtitle: "You have the product.\nWe build everything\naround it.",
       description: "We create the visual world that gives it meaning — from art direction and photography to campaign concepts, content, and creative direction.",
       footer: "Product → Identity → Campaign → World",
-      image: "/collaboration/02.png",
+      image: "/drop1/shot3.webp",
       span: "col-span-1 lg:col-span-2",
       slug: "build-the-world"
     },
@@ -69,7 +69,7 @@ export default function CollaborationSection() {
       subtitle: "Start with an idea.\nBuild the whole thing.",
       description: "Nothing is fully defined yet.\nThat's where we come in. We develop the idea with you from the ground up — product, brand identity, visual language, website, campaign, and the creative world around it.",
       footer: "Idea → Product → Brand → Launch",
-      image: "/collaboration/03.png",
+      image: "/bolor/promo.webp",
       span: "col-span-1 lg:col-span-2",
       slug: "create-together"
     },
@@ -79,7 +79,7 @@ export default function CollaborationSection() {
       subtitle: "Your brand is ready.\nNow let's put it in front of people.",
       description: "We create the digital and marketing layer that connects your creative with the right audience — from conversion-focused landing pages and campaign creative to paid media and performance optimization.",
       footer: "Landing Page → Creative → Media → Conversion",
-      image: "/collaboration/04.png",
+      image: "/drop2/campaign.webp",
       span: "col-span-1 lg:col-span-3",
       slug: "launch-with-us"
     },
@@ -88,7 +88,7 @@ export default function CollaborationSection() {
       title: "Something\nElse",
       subtitle: "Have an idea that doesn't\nfit a category?",
       description: "Good.\nNot every project needs to fit inside a predefined service.\nBring us the idea. Bring us the problem.\nBring us the direction.\n\nWe'll figure out what it needs.",
-      image: "/collaboration/05.png",
+      image: "/drop2/shot1.webp",
       span: "col-span-1 lg:col-span-3",
       slug: "something-else"
     }
