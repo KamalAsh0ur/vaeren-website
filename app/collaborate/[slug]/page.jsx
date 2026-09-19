@@ -98,7 +98,7 @@ function DesignWithUsPage({ data }) {
       <EditorialCapabilities capabilities={data.capabilities} />
       <DeepCaseStudy study={data.caseStudy} />
       <MinimalProcess steps={data.process} />
-      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} />
+      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} serviceTitle={data.catalogTitle} />
     </>
   );
 }
@@ -116,7 +116,7 @@ function BuildTheWorldPage({ data }) {
       <PositioningStatement statement={data.positioning} description={data.positioningDescription} />
       <EditorialCapabilities capabilities={data.capabilities} />
       <MinimalProcess steps={data.process} />
-      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} />
+      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} serviceTitle={data.catalogTitle} />
     </>
   );
 }
@@ -134,7 +134,7 @@ function CreateTogetherPage({ data }) {
       <MinimalProcess steps={data.process} />
       <DeepCaseStudy study={data.caseStudy} />
       <EditorialCapabilities capabilities={data.capabilities} />
-      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} />
+      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} serviceTitle={data.catalogTitle} />
     </>
   );
 }
@@ -152,7 +152,7 @@ function LaunchWithUsPage({ data }) {
       <EditorialCapabilities capabilities={data.capabilities} />
       <MinimalProcess steps={data.process} />
       <DeepCaseStudy study={data.caseStudy} />
-      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} />
+      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} serviceTitle={data.catalogTitle} />
     </>
   );
 }
@@ -175,7 +175,7 @@ function SomethingElsePage({ data }) {
       </WorkShowcase>
       <EditorialCapabilities capabilities={data.capabilities} />
       <DeepCaseStudy study={data.caseStudy} />
-      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} />
+      <ConversationalCTA prompt={data.cta.prompt} ctaText={data.cta.button} serviceTitle={data.catalogTitle} />
     </>
   );
 }

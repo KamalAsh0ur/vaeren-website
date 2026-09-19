@@ -165,7 +165,7 @@ export function DeepCaseStudy({ study }) {
   );
 }
 
-export function ConversationalCTA({ prompt, ctaText = "Start a project" }) {
+export function ConversationalCTA({ prompt, ctaText = "Start a project", serviceTitle = "General Inquiry" }) {
     const [showForm, setShowForm] = useState(false);
 
     return (
@@ -175,9 +175,9 @@ export function ConversationalCTA({ prompt, ctaText = "Start a project" }) {
             </h2>
             
             {showForm ? (
-              <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+               <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
                  <Suspense fallback={<div className="type-meta uppercase tracking-widest text-xs">Loading form...</div>}>
-                   <ContactForm />
+                   <ContactForm serviceName={serviceTitle} />
                  </Suspense>
               </div>
             ) : (

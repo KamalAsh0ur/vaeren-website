@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import MagneticElement from './MagneticElement';
 
-export default function ContactForm() {
+export default function ContactForm({ serviceName = 'General Inquiry' }) {
   const [status, setStatus] = useState(''); // 'idle', 'submitting', 'success', 'error'
   const searchParams = useSearchParams();
   
   const utmSource = searchParams.get('utm_source') || '';
   const utmMedium = searchParams.get('utm_medium') || '';
   const utmCampaign = searchParams.get('utm_campaign') || '';
+  const utmContent = searchParams.get('utm_content') || '';
+  const utmTerm = searchParams.get('utm_term') || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +76,9 @@ export default function ContactForm() {
       <input type="hidden" name="utm_source" value={utmSource} />
       <input type="hidden" name="utm_medium" value={utmMedium} />
       <input type="hidden" name="utm_campaign" value={utmCampaign} />
+      <input type="hidden" name="utm_content" value={utmContent} />
+      <input type="hidden" name="utm_term" value={utmTerm} />
+      <input type="hidden" name="service" value={serviceName} />
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex flex-col gap-2">
