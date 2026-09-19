@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Link from 'next/link';
 
 export default function CollaborationSection() {
   const sectionRef = useRef(null);
@@ -49,7 +50,8 @@ export default function CollaborationSection() {
       description: "We work with you to develop the clothing concept — from silhouettes and details to the design language, materials, and visual decisions that make the product feel unmistakably yours.",
       footer: "Brand → Concept → Product",
       image: "/collaboration/01.png",
-      span: "col-span-1 lg:col-span-2"
+      span: "col-span-1 lg:col-span-2",
+      slug: "design-with-us"
     },
     {
       id: "02",
@@ -58,7 +60,8 @@ export default function CollaborationSection() {
       description: "We create the visual world that gives it meaning — from art direction and photography to campaign concepts, content, and creative direction.",
       footer: "Product → Identity → Campaign → World",
       image: "/collaboration/02.png",
-      span: "col-span-1 lg:col-span-2"
+      span: "col-span-1 lg:col-span-2",
+      slug: "build-the-world"
     },
     {
       id: "03",
@@ -67,7 +70,8 @@ export default function CollaborationSection() {
       description: "Nothing is fully defined yet.\nThat's where we come in. We develop the idea with you from the ground up — product, brand identity, visual language, website, campaign, and the creative world around it.",
       footer: "Idea → Product → Brand → Launch",
       image: "/collaboration/03.png",
-      span: "col-span-1 lg:col-span-2"
+      span: "col-span-1 lg:col-span-2",
+      slug: "create-together"
     },
     {
       id: "04",
@@ -76,7 +80,8 @@ export default function CollaborationSection() {
       description: "We create the digital and marketing layer that connects your creative with the right audience — from conversion-focused landing pages and campaign creative to paid media and performance optimization.",
       footer: "Landing Page → Creative → Media → Conversion",
       image: "/collaboration/04.png",
-      span: "col-span-1 lg:col-span-3"
+      span: "col-span-1 lg:col-span-3",
+      slug: "launch-with-us"
     },
     {
       id: "05",
@@ -84,7 +89,8 @@ export default function CollaborationSection() {
       subtitle: "Have an idea that doesn't\nfit a category?",
       description: "Good.\nNot every project needs to fit inside a predefined service.\nBring us the idea. Bring us the problem.\nBring us the direction.\n\nWe'll figure out what it needs.",
       image: "/collaboration/05.png",
-      span: "col-span-1 lg:col-span-3"
+      span: "col-span-1 lg:col-span-3",
+      slug: "something-else"
     }
   ];
 
@@ -95,7 +101,7 @@ export default function CollaborationSection() {
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-2">
             {options.map((opt, i) => (
-                <div key={opt.id} className={`collab-card group relative flex flex-col overflow-hidden min-h-[600px] lg:min-h-[750px] bg-[#050505] ${opt.span}`}>
+                <Link href={`/collaborate/${opt.slug}`} key={opt.id} className={`collab-card group relative flex flex-col overflow-hidden min-h-[600px] lg:min-h-[750px] bg-[#050505] cursor-pointer ${opt.span}`}>
                     
                     {/* Background Image & Overlay */}
                     <img 
@@ -153,7 +159,7 @@ export default function CollaborationSection() {
                       </div>
 
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
 
