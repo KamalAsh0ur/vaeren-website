@@ -4,7 +4,10 @@ import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import ContactForm from '../ContactForm';
 
-export function ServiceHero({ hero, ctaText = "Start a project" }) {
+export function ServiceHero({ hero, ctaText = "Start a project", lang }) {
+  const isRTL = lang === 'ar';
+  const arrow = isRTL ? '\u2190' : '\u2192';
+
   return (
     <section className="relative min-h-[70vh] flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 overflow-hidden border-b border-white/5">
       <div className="absolute inset-0 z-0">
@@ -13,15 +16,15 @@ export function ServiceHero({ hero, ctaText = "Start a project" }) {
       
       <div className="relative z-10 w-full max-w-[1200px] mx-auto flex flex-col items-start mt-auto">
         <h1 className="type-h1 text-6xl md:text-8xl lg:text-[7rem] leading-[1.0] tracking-tight mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          <span className="block text-[var(--color-vaeren-concrete)]">{hero.subtitle}</span>
-          <span className="block text-white">{hero.title}</span>
+          <span className="block text-[var(--color-vaeren-concrete)] whitespace-pre-wrap">{hero.subtitle}</span>
+          <span className="block text-white whitespace-pre-wrap">{hero.title}</span>
         </h1>
         <p className="type-body text-2xl md:text-3xl text-white max-w-2xl leading-snug animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 mb-12">
-          {hero.sentence}
+          {hero.heroBody}
         </p>
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
-            <a href="#contact-flow" className="type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-8 tracking-widest uppercase text-sm md:text-base">
-                {ctaText} &rarr;
+            <a href="#contact-flow" className={`type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-8 tracking-widest uppercase text-sm md:text-base flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                {ctaText} <span className={isRTL ? 'mr-2' : 'ml-2'}>{arrow}</span>
             </a>
         </div>
       </div>
@@ -37,13 +40,14 @@ export function WorkShowcase({ children }) {
   );
 }
 
-export function ImageBlock({ src, alt, caption, full = false, aspect = "aspect-[4/5]" }) {
+export function ImageBlock({ src, alt, caption, full = false, aspect = "aspect-[4/5]", lang }) {
+    const isRTL = lang === 'ar';
     return (
         <div className={`relative ${full ? 'w-full' : 'w-full max-w-[1400px] mx-auto px-4 md:px-12'} mb-8 md:mb-16`}>
             <div className={`w-full overflow-hidden bg-[#050505] relative ${aspect}`}>
                 <img src={src} alt={alt} className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000" />
                 {caption && (
-                    <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 type-meta text-[10px] md:text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1.5 text-white/80 border border-white/10 tracking-widest">
+                    <div className={`absolute bottom-4 ${isRTL ? 'right-4 md:right-8' : 'left-4 md:left-8'} md:bottom-8 type-meta text-[10px] md:text-xs uppercase bg-black/50 backdrop-blur-md px-3 py-1.5 text-white/80 border border-white/10 tracking-widest`}>
                         {caption}
                     </div>
                 )}
@@ -65,19 +69,19 @@ export function PositioningStatement({ statement, description }) {
   );
 }
 
-export function EditorialCapabilities({ capabilities }) {
+export function EditorialCapabilities({ capabilities, dict }) {
   return (
     <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-24 border-t border-white/10">
       <div className="flex flex-col md:flex-row gap-12 md:gap-24">
         <div className="md:w-1/3 shrink-0">
-          <h2 className="type-meta text-[#d05c35] tracking-widest uppercase">WE HANDLE</h2>
+          <h2 className="type-meta text-[#d05c35] tracking-widest uppercase">{dict.serviceBlocks.weHandle}</h2>
         </div>
         <div className="md:w-2/3">
           <ul className="flex flex-wrap gap-x-8 gap-y-4 type-meta text-xs md:text-sm tracking-widest text-[var(--color-vaeren-concrete)] uppercase">
             {capabilities.map((cap, idx) => (
               <li key={idx} className="flex items-center">
                 {cap}
-                {idx !== capabilities.length - 1 && <span className="text-white/20 ml-8 hidden md:inline">/</span>}
+                {idx !== capabilities.length - 1 && <span className="text-white/20 mx-8 hidden md:inline">/</span>}
               </li>
             ))}
           </ul>
@@ -87,23 +91,23 @@ export function EditorialCapabilities({ capabilities }) {
   );
 }
 
-export function MinimalProcess({ steps }) {
+export function MinimalProcess({ steps, dict }) {
   return (
     <section className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-24 border-t border-white/10">
        <div className="flex flex-col md:flex-row gap-12 md:gap-24">
         <div className="md:w-1/3 shrink-0">
-          <h2 className="type-meta text-[#d05c35] tracking-widest uppercase">PROCESS</h2>
+          <h2 className="type-meta text-[#d05c35] tracking-widest uppercase">{dict.serviceBlocks.process}</h2>
         </div>
         <div className="md:w-2/3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                 {steps.map((step, idx) => (
                     <div key={idx} className="flex flex-col">
                         <div className="type-meta text-white tracking-widest uppercase text-xs mb-3 flex gap-4">
-                            <span className="text-[var(--color-vaeren-ash)]">{step.num}</span>
+                            <span className="text-[var(--color-vaeren-ash)]">0{idx + 1}</span>
                             <span>{step.title}</span>
                         </div>
                         <p className="type-body text-sm md:text-base text-[var(--color-vaeren-ash)] leading-relaxed">
-                            {step.desc}
+                            {step.body}
                         </p>
                     </div>
                 ))}
@@ -114,22 +118,25 @@ export function MinimalProcess({ steps }) {
   );
 }
 
-export function DeepCaseStudy({ study }) {
+export function DeepCaseStudy({ study, dict, lang }) {
   if (!study) return null;
+  const isRTL = lang === 'ar';
+  const arrow = isRTL ? '\u2190' : '\u2192';
+
   return (
     <section className="w-full mx-auto bg-[#050505] py-24 md:py-48 mt-24 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-            <h2 className="type-meta text-[#d05c35] mb-8 tracking-widest uppercase">CASE STUDY</h2>
+            <h2 className="type-meta text-[#d05c35] mb-8 tracking-widest uppercase">{dict.serviceBlocks.caseStudy}</h2>
             <h3 className="type-h1 text-5xl md:text-7xl mb-16 max-w-4xl">{study.title}</h3>
             
             <div className="mb-24 flex flex-col md:flex-row justify-between border-t border-white/10 pt-8 gap-8">
                 <div>
-                    <span className="type-meta text-white/40 block mb-4 uppercase tracking-widest text-[10px]">PROJECT</span>
+                    <span className="type-meta text-white/40 block mb-4 uppercase tracking-widest text-[10px]">{dict.serviceBlocks.project}</span>
                     <span className="type-meta text-white uppercase tracking-widest text-sm">{study.project}</span>
                 </div>
-                <div className="md:text-right max-w-xl">
-                    <span className="type-meta text-white/40 block mb-4 uppercase tracking-widest text-[10px]">SCOPE</span>
-                    <div className="flex flex-wrap md:justify-end gap-x-4 gap-y-2 type-meta uppercase text-white/80 text-xs md:text-sm">
+                <div className={`max-w-xl ${isRTL ? 'md:text-left' : 'md:text-right'}`}>
+                    <span className="type-meta text-white/40 block mb-4 uppercase tracking-widest text-[10px]">{dict.serviceBlocks.scope}</span>
+                    <div className={`flex flex-wrap gap-x-4 gap-y-2 type-meta uppercase text-white/80 text-xs md:text-sm ${isRTL ? 'md:justify-start' : 'md:justify-end'}`}>
                         {study.scope.map((s, i) => (
                             <React.Fragment key={i}>
                             <span>{s}</span>
@@ -145,7 +152,7 @@ export function DeepCaseStudy({ study }) {
                     <div key={i} className={`relative overflow-hidden bg-[#0a0a0a] ${img.full ? 'col-span-1 md:col-span-2 aspect-[21/9]' : 'aspect-square md:aspect-[4/5]'}`}>
                         <img src={img.src} alt="Case study visual" className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" />
                         {img.caption && (
-                             <div className="absolute bottom-4 left-4 type-meta text-[10px] uppercase bg-black/50 backdrop-blur-md px-3 py-1.5 text-white/80 border border-white/10 tracking-widest">
+                             <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} type-meta text-[10px] uppercase bg-black/50 backdrop-blur-md px-3 py-1.5 text-white/80 border border-white/10 tracking-widest`}>
                                  {img.caption}
                              </div>
                         )}
@@ -155,8 +162,8 @@ export function DeepCaseStudy({ study }) {
             
             {study.link && (
                 <div className="mt-16 text-center">
-                    <Link href={study.link} className="btn-secondary uppercase tracking-widest" data-cursor-text="VIEW">
-                        Explore Full Project &rarr;
+                    <Link href={`/${lang}/work/${study.link}`} className={`btn-secondary uppercase tracking-widest flex items-center justify-center mx-auto ${isRTL ? 'flex-row-reverse' : ''}`} data-cursor-text="VIEW">
+                        {dict.serviceBlocks.exploreFullProject} <span className={isRTL ? 'mr-2' : 'ml-2'}>{arrow}</span>
                     </Link>
                 </div>
             )}
@@ -165,28 +172,30 @@ export function DeepCaseStudy({ study }) {
   );
 }
 
-export function ConversationalCTA({ prompt, ctaText = "Start a project", serviceTitle = "General Inquiry" }) {
+export function ConversationalCTA({ dict, lang, serviceTitle = "General Inquiry" }) {
     const [showForm, setShowForm] = useState(false);
+    const isRTL = lang === 'ar';
+    const arrow = isRTL ? '\u2190' : '\u2192';
 
     return (
         <section id="contact-flow" className="w-full bg-[#d05c35] text-black py-32 md:py-48 px-6 md:px-12 flex flex-col items-center text-center relative z-20">
-            <h2 className="type-h1 text-5xl md:text-7xl lg:text-[6rem] leading-[1.0] tracking-tight mb-16 max-w-5xl">
-                {prompt}
+            <h2 className="type-h1 text-5xl md:text-7xl lg:text-[6rem] leading-[1.0] tracking-tight mb-16 max-w-5xl text-black">
+                {dict.footer.headline1} <br/> {dict.footer.headline2}
             </h2>
             
             {showForm ? (
                <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                 <Suspense fallback={<div className="type-meta uppercase tracking-widest text-xs">Loading form...</div>}>
-                   <ContactForm serviceName={serviceTitle} />
+                 <Suspense fallback={<div className="type-meta uppercase tracking-widest text-xs">{dict.serviceBlocks.loadingForm}</div>}>
+                   <ContactForm dict={dict} lang={lang} serviceName={serviceTitle} />
                  </Suspense>
               </div>
             ) : (
               <button 
                 onClick={() => setShowForm(true)} 
-                className="group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 rounded-sm overflow-hidden border border-black transition-all hover:bg-transparent hover:text-black"
+                className={`group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 rounded-sm overflow-hidden border border-black transition-all hover:bg-transparent hover:text-black ${isRTL ? 'flex-row-reverse' : ''}`}
               >
-                  <span className="type-meta tracking-widest uppercase text-xs md:text-sm relative z-10 font-medium">
-                      {ctaText} &rarr;
+                  <span className="type-meta tracking-widest uppercase text-xs md:text-sm relative z-10 font-medium flex items-center">
+                      {dict.serviceBlocks.startProject} <span className={isRTL ? 'mr-2' : 'ml-2'}>{arrow}</span>
                   </span>
               </button>
             )}
@@ -196,7 +205,7 @@ export function ConversationalCTA({ prompt, ctaText = "Start a project", service
                     @vaeren.studios
                 </a>
                 <span className="hidden md:inline">·</span>
-                <span>Cairo, Egypt</span>
+                <span>{dict.footer.location}</span>
             </div>
         </section>
     );

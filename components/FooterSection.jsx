@@ -22,31 +22,33 @@ Looking forward to hearing from you.`;
 
 const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
-export default function FooterSection() {
+export default function FooterSection({ dict, lang }) {
   const [showForm, setShowForm] = useState(false);
+  const isRTL = lang === 'ar';
+  const arrow = isRTL ? '\u2190' : '\u2192';
 
   return (
     <footer className="bg-black text-[var(--color-vaeren-bone)] flex flex-col justify-center p-4 md:p-12 relative z-20 overflow-hidden py-32 md:py-48 border-t border-white/10">
       <div className="w-full max-w-[1400px] mx-auto flex flex-col items-center text-center">
         
         <h2 className="type-h1 uppercase leading-[1.1] mb-12 max-w-4xl tracking-tight">
-          Got a brand? <br />
-          Got an idea? <br />
-          <span className="text-[var(--color-vaeren-concrete)]">Let's make something strange.</span>
+          {dict.footer.headline1} <br />
+          {dict.footer.headline2} <br />
+          <span className="text-[var(--color-vaeren-concrete)]">{dict.footer.headline3}</span>
         </h2>
         
         {showForm ? (
           <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-             <ContactForm />
+             <ContactForm dict={dict} lang={lang} />
              <div className="mt-12 type-meta text-[var(--color-vaeren-ash)]">
-               Prefer email? <a href={MAILTO_HREF} className="text-[var(--color-vaeren-concrete)] underline hover:text-white">kamal.ashour.bessa@gmail.com</a>
+               {dict.footer.preferEmail} <a href={MAILTO_HREF} className="text-[var(--color-vaeren-concrete)] underline hover:text-white">kamal.ashour.bessa@gmail.com</a>
              </div>
           </div>
         ) : (
           <div className="flex flex-col md:flex-row gap-4 items-center">
               <MagneticElement strength={0.2}>
                   <button onClick={() => setShowForm(true)} className="btn-primary" data-cursor-text="START">
-                      Start A Project <span className="arrow">&rarr;</span>
+                      {dict.footer.startProject} <span className="arrow ml-2">{arrow}</span>
                   </button>
               </MagneticElement>
               <MagneticElement strength={0.2}>
@@ -57,7 +59,7 @@ export default function FooterSection() {
                     className="btn-secondary" 
                     data-cursor-text="FOLLOW"
                   >
-                      Follow on Instagram <span className="arrow">&rarr;</span>
+                      {dict.footer.followOnInstagram} <span className="arrow ml-2">{arrow}</span>
                   </a>
               </MagneticElement>
           </div>
@@ -73,15 +75,15 @@ export default function FooterSection() {
                 @vaeren.studios
             </a>
             <span className="hidden md:inline">·</span>
-            <span>Cairo, Egypt</span>
+            <span>{dict.footer.location}</span>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-6 type-meta text-xs text-[var(--color-vaeren-ash)]/60">
-            <Link href="/privacy" className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
-              Privacy Policy
+            <Link href={`/${lang}/privacy`} className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
+              {dict.footer.privacyPolicy}
             </Link>
-            <Link href="/returns" className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
-              Returns & Cancellations
+            <Link href={`/${lang}/returns`} className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
+              {dict.footer.returnsCancellations}
             </Link>
         </div>
 

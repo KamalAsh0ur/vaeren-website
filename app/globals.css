@@ -19,6 +19,11 @@
   --color-vaeren-earth: #7a6a56;
 }
 
+[dir="rtl"] {
+  --font-display: var(--font-arabic);
+  --font-system: var(--font-arabic);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -142,6 +147,9 @@ body {
 .btn-primary:hover .arrow {
   transform: translateX(4px);
 }
+[dir="rtl"] .btn-primary:hover .arrow {
+  transform: translateX(-4px);
+}
 
 .btn-secondary {
   display: inline-flex;
@@ -174,6 +182,9 @@ body {
 .btn-secondary:hover .arrow {
   transform: translateX(4px);
 }
+[dir="rtl"] .btn-secondary:hover .arrow {
+  transform: translateX(-4px);
+}
 
 .btn-tertiary {
   display: inline-flex;
@@ -199,6 +210,13 @@ body {
   margin-left: 8px;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+[dir="rtl"] .btn-tertiary .arrow {
+  margin-left: 0;
+  margin-right: 8px;
+}
 .btn-tertiary:hover .arrow {
   transform: translateX(4px);
+}
+[dir="rtl"] .btn-tertiary:hover .arrow {
+  transform: translateX(-4px);
 }

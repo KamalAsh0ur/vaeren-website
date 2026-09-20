@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Minus } from 'lucide-react';
 import MagneticElement from './MagneticElement';
 import MenuOverlay from './MenuOverlay';
+import LanguageSwitcher from './LanguageSwitcher';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -28,9 +29,10 @@ Looking forward to hearing from you.`;
 
 const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
-export default function OverlayUI() {
+export default function OverlayUI({ dict, lang }) {
   const overlayRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isRTL = lang === 'ar';
 
   useEffect(() => {
     // 8000px total scroll, split into distinct storytelling phases
@@ -125,6 +127,8 @@ export default function OverlayUI() {
     };
   }, []);
 
+  const arrow = isRTL ? '\u2190' : '\u2192';
+
   return (
     <>
       <div ref={overlayRef} className="absolute inset-0 pointer-events-none flex flex-col justify-between p-4 md:px-12 md:py-10 z-10 text-[var(--color-vaeren-bone)] opacity-80">
@@ -136,10 +140,15 @@ export default function OverlayUI() {
                   <img src="/logo.webp" alt="Vaeren Studios" className="h-6 object-contain" />
               </MagneticElement>
           </div>
-          <nav className="flex items-center space-x-6 md:space-x-12 type-meta uppercase text-[var(--color-vaeren-concrete)] md:-mt-2 md:-mr-4">
+          <nav className={`flex items-center ${isRTL ? 'space-x-reverse space-x-6 md:space-x-reverse md:space-x-12' : 'space-x-6 md:space-x-12'} type-meta uppercase text-[var(--color-vaeren-concrete)] md:-mt-2 md:-mr-4`}>
+            <div className="hidden md:block">
+              <Suspense fallback={null}>
+                <LanguageSwitcher lang={lang} />
+              </Suspense>
+            </div>
             <div className="hidden md:block">
               <MagneticElement strength={0.4}>
-                  <a href="#work" className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="WORK">Work</a>
+                  <a href="#work" className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="WORK">{dict.nav.work}</a>
               </MagneticElement>
             </div>
             <MagneticElement strength={0.4}>
@@ -149,12 +158,12 @@ export default function OverlayUI() {
                   data-cursor-text="ENTER"
                   aria-label="Open Menu"
                 >
-                  Menu
+                  {dict.nav.menu}
                 </button>
             </MagneticElement>
             <div className="hidden md:block">
               <MagneticElement strength={0.4}>
-                  <a href={MAILTO_HREF} className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="START">Start a Project</a>
+                  <a href={MAILTO_HREF} className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="START">{dict.nav.startProject}</a>
               </MagneticElement>
             </div>
           </nav>
@@ -165,60 +174,60 @@ export default function OverlayUI() {
           
           {/* Starting Screen */}
           <div id="start-screen" className="absolute left-1/2 top-[75%] md:top-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full text-center px-4">
-            <h1 className="type-h2 mb-4 tracking-[0.2em] opacity-100">VAEREN STUDIOS</h1>
-            <h2 className="type-body text-white mb-4 tracking-[0.2em] uppercase opacity-90">Don't Make What Already Exists.</h2>
+            <h1 className="type-h2 mb-4 tracking-[0.2em] opacity-100">{dict.hero.studioName}</h1>
+            <h2 className="type-body text-white mb-4 tracking-[0.2em] uppercase opacity-90">{dict.hero.tagline}</h2>
             <p className="type-body text-white/60 max-w-lg mx-auto mb-8 text-sm normal-case tracking-normal opacity-80">
-              A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.
+              {dict.hero.description}
             </p>
             <div className="w-[1px] h-12 md:h-16 bg-white/20 relative overflow-hidden">
                 <div id="start-line" className="absolute top-0 left-0 w-full h-full bg-white"></div>
             </div>
           </div>
 
-          {/* Origin - Content RIGHT (Desktop) / CENTER (Mobile) */}
-          <div id="text-origin" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3 drop-shadow-xl">
-            <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Building The World</h2>
-            <p className="type-body text-white text-center md:text-right stagger-item opacity-0">
-              We are building the concepts we want to see. Open to collaboration with brands who want in.
+          {/* Origin */}
+          <div id="text-origin" className={`absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 ${isRTL ? 'md:left-auto md:right-auto md:left-[5%] md:-translate-x-0 md:top-[80%] md:items-start md:w-1/3' : 'md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3'} drop-shadow-xl`}>
+            <h2 className={`type-h2 mb-4 stagger-item opacity-0 text-center ${isRTL ? 'md:text-right' : 'md:text-right'}`}>{dict.phases.origin.title}</h2>
+            <p className={`type-body text-white text-center ${isRTL ? 'md:text-right' : 'md:text-right'} stagger-item opacity-0`}>
+              {dict.phases.origin.body}
             </p>
           </div>
 
-          {/* Movement - Content LEFT (Desktop) / CENTER (Mobile) */}
-          <div id="text-movement" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:-translate-x-0 md:left-[5%] md:top-[80%] md:items-start md:w-1/3 drop-shadow-xl">
-            <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-left">Collaboration → World</h2>
-            <p className="type-body text-white text-center md:text-left stagger-item opacity-0">
-              Taking an ordinary clothing idea and pushing it into something unexpected, recognizable, and difficult to replicate.
+          {/* Movement */}
+          <div id="text-movement" className={`absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 ${isRTL ? 'md:left-auto md:right-[5%] md:-translate-x-0 md:top-[80%] md:items-end md:w-1/3' : 'md:-translate-x-0 md:left-[5%] md:top-[80%] md:items-start md:w-1/3'} drop-shadow-xl`}>
+            <h2 className={`type-h2 mb-4 stagger-item opacity-0 text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}>{dict.phases.movement.title}</h2>
+            <p className={`type-body text-white text-center ${isRTL ? 'md:text-right' : 'md:text-left'} stagger-item opacity-0`}>
+              {dict.phases.movement.body}
             </p>
           </div>
 
-          {/* Transformation - Content RIGHT (Desktop) / CENTER (Mobile) */}
-          <div id="text-transformation" className="absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3 drop-shadow-xl">
-            <h2 className="type-h2 mb-4 stagger-item opacity-0 text-center md:text-right">Visual World → Campaign</h2>
-            <p className="type-body text-white text-center md:text-right stagger-item opacity-0">
-              A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else.
+          {/* Transformation */}
+          <div id="text-transformation" className={`absolute left-1/2 -translate-x-1/2 top-[78%] w-10/12 flex flex-col items-center px-4 md:px-0 ${isRTL ? 'md:left-auto md:right-auto md:left-[5%] md:-translate-x-0 md:top-[80%] md:items-start md:w-1/3' : 'md:left-auto md:-translate-x-0 md:right-[5%] md:top-[80%] md:items-end md:w-1/3'} drop-shadow-xl`}>
+            <h2 className={`type-h2 mb-4 stagger-item opacity-0 text-center ${isRTL ? 'md:text-right' : 'md:text-right'}`}>{dict.phases.transformation.title}</h2>
+            <p className={`type-body text-white text-center ${isRTL ? 'md:text-right' : 'md:text-right'} stagger-item opacity-0`}>
+              {dict.phases.transformation.body}
             </p>
           </div>
 
-          {/* Collection - Centered (Moved down on mobile) */}
+          {/* Collection - Centered */}
           <div id="text-collection" className="absolute left-1/2 top-[78%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center w-10/12 md:w-full px-4 md:px-0">
-            <h2 className="type-h1 mb-8 stagger-item opacity-0">Start a Collaboration</h2>
+            <h2 className="type-h1 mb-8 stagger-item opacity-0">{dict.phases.collection.title}</h2>
             <div className="stagger-item opacity-0 pointer-events-auto flex flex-col md:flex-row gap-4">
                 <MagneticElement strength={0.3}>
                     <a href={MAILTO_HREF} className="btn-primary" data-cursor-text="START">
-                        Start A Project <span className="arrow">&rarr;</span>
+                        {dict.phases.collection.startProject} <span className="arrow">{arrow}</span>
                     </a>
                 </MagneticElement>
                 <MagneticElement strength={0.3}>
                     <a href="#work" className="btn-secondary" data-cursor-text="VIEW">
-                        Explore The Work
+                        {dict.phases.collection.exploreWork}
                     </a>
                 </MagneticElement>
             </div>
           </div>
         </div>
         
-        <footer className="flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)] gap-2 w-full">
-          <div className="flex-1 text-left shrink-0">Creative Studio</div>
+        <footer className={`flex justify-between items-end pointer-events-auto type-meta text-[var(--color-vaeren-ash)] gap-2 w-full ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex-1 ${isRTL ? 'text-right' : 'text-left'} shrink-0`}>{dict.overlayFooter.label}</div>
           <div className="shrink-0 flex flex-col items-center justify-end pb-1">
               <MagneticElement strength={0.4}>
                   <a 
@@ -229,15 +238,15 @@ export default function OverlayUI() {
                     aria-label="Follow us on Instagram"
                     data-cursor-text="FOLLOW"
                   >
-                      Instagram
+                      {dict.overlayFooter.instagram}
                   </a>
               </MagneticElement>
           </div>
-          <div className="flex-1 text-right shrink-0">Cairo, Egypt <br/> Estd. 2026</div>
+          <div className={`flex-1 ${isRTL ? 'text-left' : 'text-right'} shrink-0`}>{dict.overlayFooter.location} <br/> {dict.overlayFooter.established}</div>
         </footer>
       </div>
 
-      <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} dict={dict} lang={lang} />
     </>
   );
 }

@@ -1,0 +1,196 @@
+{
+  "nav": {
+    "work": "Work",
+    "menu": "Menu",
+    "startProject": "Start a Project",
+    "close": "Close"
+  },
+  "hero": {
+    "studioName": "VAEREN STUDIOS",
+    "tagline": "Don't Make What Already Exists.",
+    "description": "A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else."
+  },
+  "phases": {
+    "origin": {
+      "title": "Building The World",
+      "body": "We are building the concepts we want to see. Open to collaboration with brands who want in."
+    },
+    "movement": {
+      "title": "Collaboration → World",
+      "body": "Taking an ordinary clothing idea and pushing it into something unexpected, recognizable, and difficult to replicate."
+    },
+    "transformation": {
+      "title": "Visual World → Campaign",
+      "body": "A creative studio collaborating with streetwear brands to design clothing, build visual worlds, and create campaigns that don't look like everything else."
+    },
+    "collection": {
+      "title": "Start a Collaboration",
+      "startProject": "Start A Project",
+      "exploreWork": "Explore The Work"
+    }
+  },
+  "overlayFooter": {
+    "label": "Creative Studio",
+    "instagram": "Instagram",
+    "location": "Cairo, Egypt",
+    "established": "Estd. 2026"
+  },
+  "philosophy": {
+    "headline": "Don't Make What Already Exists.",
+    "body1": "Streetwear moves quickly. Vaeren exists to challenge repetition. We collaborate with brands to create clothing, campaigns, and visual identities that feel new, specific, and unmistakably theirs.",
+    "body2": "The objective isn't simply to make something beautiful. It's to make something people remember."
+  },
+  "selectedWork": {
+    "label": "Selected Work",
+    "headline": "DESIGNED TO EXIST OUTSIDE THE ORDINARY.",
+    "description": "A selection of drops, collaborations, product systems, and creative work developed with brands and independent labels.",
+    "scope": "SCOPE",
+    "viewCompleteTechPack": "VIEW COMPLETE TECH PACK",
+    "pdfMobileHint": "PREVIEW (TAP IMAGE ON MOBILE TO OPEN FULL PDF)",
+    "categories": {
+      "drops": "DROPS",
+      "collaborations": "COLLABORATIONS",
+      "designDevelopment": "DESIGN / DEVELOPMENT"
+    },
+    "labels": {
+      "patternGrading": "PATTERN GRADING",
+      "technicalFlats": "TECHNICAL FLATS",
+      "pomSpec": "POM SPEC",
+      "construction": "CONSTRUCTION"
+    }
+  },
+  "archive": {
+    "label": "ARCHIVE / VISUAL WORLD"
+  },
+  "collaboration": {
+    "studioLabel": "VAEREN\nSTUDIOS",
+    "contextLabel": "BRANDS\nPRODUCTS\nCULTURE",
+    "bottomLabel": "A CREATIVE STUDIO\nFOR BOLD BRANDS",
+    "options": [
+      {
+        "id": "01",
+        "title": "Design\nWith Us",
+        "subtitle": "You have the brand.\nWe create the product.",
+        "description": "We work with you to develop the clothing concept — from silhouettes and details to the design language, materials, and visual decisions that make the product feel unmistakably yours.",
+        "footer": "Brand → Concept → Product"
+      },
+      {
+        "id": "02",
+        "title": "Build\nThe World",
+        "subtitle": "You have the product.\nWe build everything\naround it.",
+        "description": "We create the visual world that gives it meaning — from art direction and photography to campaign concepts, content, and creative direction.",
+        "footer": "Product → Identity → Campaign → World"
+      },
+      {
+        "id": "03",
+        "title": "Create\nTogether",
+        "subtitle": "Start with an idea.\nBuild the whole thing.",
+        "description": "Nothing is fully defined yet.\nThat's where we come in. We develop the idea with you from the ground up — product, brand identity, visual language, website, campaign, and the creative world around it.",
+        "footer": "Idea → Product → Brand → Launch"
+      },
+      {
+        "id": "04",
+        "title": "Launch\nWith Us",
+        "subtitle": "Your brand is ready.\nNow let's put it in front of people.",
+        "description": "We create the digital and marketing layer that connects your creative with the right audience — from conversion-focused landing pages and campaign creative to paid media and performance optimization.",
+        "footer": "Landing Page → Creative → Media → Conversion"
+      },
+      {
+        "id": "05",
+        "title": "Something\nElse",
+        "subtitle": "Have an idea that doesn't\nfit a category?",
+        "description": "Good.\nNot every project needs to fit inside a predefined service.\nBring us the idea. Bring us the problem.\nBring us the direction.\n\nWe'll figure out what it needs.",
+        "footer": null
+      }
+    ]
+  },
+  "social": {
+    "followOnInstagram": "Follow on Instagram"
+  },
+  "footer": {
+    "headline1": "Got a brand?",
+    "headline2": "Got an idea?",
+    "headline3": "Let's make something strange.",
+    "startProject": "Start A Project",
+    "followOnInstagram": "Follow on Instagram",
+    "preferEmail": "Prefer email?",
+    "location": "Cairo, Egypt",
+    "privacyPolicy": "Privacy Policy",
+    "returnsCancellations": "Returns & Cancellations"
+  },
+  "contact": {
+    "nameLabel": "Name / Brand",
+    "namePlaceholder": "Vaeren Studios",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "hello@vaeren.com",
+    "projectLabel": "Project Type",
+    "projectOptions": {
+      "discuss": "Not Sure Yet / Let's Discuss",
+      "design": "Design Collaboration",
+      "campaign": "Campaign / Art Direction",
+      "full": "Full Partnership",
+      "other": "Other"
+    },
+    "messageLabel": "Brief Description",
+    "messagePlaceholder": "Tell us what you're building...",
+    "submitButton": "Submit Inquiry",
+    "submitting": "Sending...",
+    "successTitle": "Request Sent.",
+    "successBody": "We'll review your brief and get back to you within 48 hours.",
+    "sendAnother": "Send another",
+    "errorMessage": "There was a problem sending your message. Please try again or use the email link.",
+    "preferChat": "Prefer to chat directly?",
+    "whatsapp": "Message on WhatsApp",
+    "notReady": "Not ready for a full project?",
+    "followBuild": "Follow the build on Instagram"
+  },
+  "menu": {
+    "links": {
+      "work": "Work",
+      "collaboration": "Collaboration",
+      "contact": "Contact"
+    },
+    "copyright": "Vaeren Studios © 2026"
+  },
+  "serviceBlocks": {
+    "weHandle": "WE HANDLE",
+    "process": "PROCESS",
+    "caseStudy": "CASE STUDY",
+    "project": "PROJECT",
+    "scope": "SCOPE",
+    "exploreFullProject": "Explore Full Project",
+    "loadingForm": "Loading form...",
+    "startProject": "Start a project"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "backToHome": "Back to Home",
+    "section1Title": "1. Data Collection",
+    "section1Body": "When you submit a project inquiry through our website, we collect your name, email address, brand name, and the project details you provide. This information is securely transmitted to our studio inbox via our form processing partner (Formspree) and is used exclusively to evaluate and respond to your collaboration request.",
+    "section2Title": "2. Analytics & Tracking",
+    "section2Body": "We use standard web analytics and the Meta Pixel (including the Conversions API) to understand how visitors interact with our website and to measure the effectiveness of our creative campaigns. This tracking helps us attribute project inquiries to specific marketing efforts.",
+    "section3Title": "3. Data Sharing",
+    "section3Body": "Vaeren Studios is a private creative practice. We do not sell, rent, or lease your personal information, project briefs, or brand ideas to any third parties. Your data is shared only with the internal team and necessary service providers (like email hosts) required to operate our studio.",
+    "section4Title": "4. Your Rights",
+    "section4Body": "If you wish to review, update, or request the deletion of your personal information from our inquiry database, please contact us directly.",
+    "lastUpdated": "Last Updated: September 2026",
+    "contactEmail": "Contact: hello@vaeren.com"
+  },
+  "returns": {
+    "title": "Returns & Cancellations",
+    "backToHome": "Back to Home",
+    "notice": "Vaeren Studios is a B2B creative and technical development studio. We provide custom services, strategy, and physical product development for brands. We do not sell retail consumer goods through this website. Therefore, standard e-commerce return policies do not apply to our work.",
+    "section1Title": "1. Custom Creative Services",
+    "section1Body": "Because our services (including creative direction, campaign photography, brand identity, and technical garment design) are entirely bespoke and require the allocation of highly specialized talent and studio time, all executed services are non-refundable.",
+    "section2Title": "2. Project Cancellations & Deposits",
+    "section2Body": "We operate on a milestone and contract basis. Before any project begins, a formal scope of work and contract is signed, which details the cancellation terms specific to your build. In general:",
+    "section2List": [
+      "Initial project deposits are strictly non-refundable once creative or development work has commenced.",
+      "If a project is cancelled by the client mid-development, the client is responsible for paying for all milestones completed and out-of-pocket production expenses incurred up to the date of cancellation."
+    ],
+    "section3Title": "3. Physical Prototypes & Samples",
+    "section3Body": "For clients utilizing our \"Design With Us\" or physical product development services, samples and prototypes are produced for review and iteration. These are bespoke developmental assets and cannot be \"returned\" for a refund. Any physical manufacturing defects during a full production run are handled according to the specific manufacturing agreement signed prior to bulk production.",
+    "lastUpdated": "Last Updated: September 2026",
+    "contactEmail": "Contact: hello@vaeren.com"
+  }
+}

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import MagneticElement from './MagneticElement';
 
-export default function SocialSection() {
+export default function SocialSection({ dict }) {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   
@@ -20,14 +20,12 @@ export default function SocialSection() {
     const track = trackRef.current;
     if (!track) return;
     
-    // We animate the track to move exactly 50% of its width
-    // Because we duplicated the items perfectly, -50% brings us exactly to the start of the second set
     const animation = gsap.to(track, {
       xPercent: -50,
       ease: 'none',
-      duration: 35, // Smooth, slow speed
+      duration: 35,
       repeat: -1,
-      force3D: true, // Forces GPU acceleration in GSAP
+      force3D: true,
     });
 
     const handleMouseEnter = () => gsap.to(animation, { timeScale: 0.1, duration: 1, ease: 'power2.out' });
@@ -57,13 +55,12 @@ export default function SocialSection() {
               data-cursor-text="FOLLOW"
               aria-label="Follow Vaeren Studios on Instagram"
             >
-                Follow on Instagram <span className="arrow ml-2">&rarr;</span>
+                {dict.social.followOnInstagram} <span className="arrow ml-2">&rarr;</span>
             </a>
         </MagneticElement>
       </div>
 
       <div className="w-full relative flex items-center" data-cursor-text="DRAG">
-        {/* We use w-max to allow it to be as wide as its children, so xPercent: -50 works precisely. Promoted to GPU. */}
         <div ref={trackRef} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
             {/* First Set */}
             {images.map((src, i) => (

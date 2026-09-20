@@ -21,22 +21,21 @@ Looking forward to hearing from you.`;
 
 const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
-const LINKS = [
-  { name: 'Work', href: '#work' },
-  { name: 'Collaboration', href: '#collaboration' },
-  { name: 'Contact', href: MAILTO_HREF },
-];
-
-export default function MenuOverlay({ isOpen, onClose }) {
+export default function MenuOverlay({ isOpen, onClose, dict, lang }) {
   const overlayRef = useRef(null);
   const linksRef = useRef([]);
+
+  const LINKS = [
+    { name: dict?.menu?.links?.work || 'Work', href: '#work' },
+    { name: dict?.menu?.links?.collaboration || 'Collaboration', href: '#collaboration' },
+    { name: dict?.menu?.links?.contact || 'Contact', href: MAILTO_HREF },
+  ];
 
   useEffect(() => {
     const overlay = overlayRef.current;
     if (!overlay) return;
 
     if (isOpen) {
-      // "Entering another room" transition
       gsap.to(overlay, {
         y: '0%',
         duration: 1.2,
@@ -46,7 +45,6 @@ export default function MenuOverlay({ isOpen, onClose }) {
         }
       });
 
-      // Staggered text reveal
       gsap.fromTo(
         linksRef.current,
         { y: '100%', opacity: 0 },
@@ -60,7 +58,6 @@ export default function MenuOverlay({ isOpen, onClose }) {
         }
       );
     } else {
-      // Exit animation
       gsap.to(overlay, {
         y: '-100%',
         duration: 1,
@@ -84,7 +81,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
         data-cursor-text="CLOSE"
       >
         <MagneticElement strength={0.3}>
-          Close &times;
+          {dict?.nav?.close || 'Close'} &times;
         </MagneticElement>
       </button>
 
@@ -108,7 +105,7 @@ export default function MenuOverlay({ isOpen, onClose }) {
       </nav>
       
       <div className="absolute bottom-12 type-meta text-[var(--color-vaeren-ash)]">
-        Vaeren Studios &copy; 2026
+        {dict?.menu?.copyright || 'Vaeren Studios © 2026'}
       </div>
     </div>
   );

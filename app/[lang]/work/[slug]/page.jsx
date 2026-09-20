@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getProjectBySlug, projects } from '../../../lib/projects';
-import ProjectLayout from '../../../components/ProjectLayout';
-import Cursor from '../../../components/Cursor';
+import { getProjectBySlug, projects } from '../../../../lib/projects';
+import ProjectLayout from '../../../../components/ProjectLayout';
+import Cursor from '../../../../components/Cursor';
 
 export async function generateStaticParams() {
   return projects.map((project) => ({

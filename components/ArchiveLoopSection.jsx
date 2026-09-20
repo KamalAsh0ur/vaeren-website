@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-export default function ArchiveLoopSection() {
+export default function ArchiveLoopSection({ dict }) {
   const track1Ref = useRef(null);
   const track2Ref = useRef(null);
   
@@ -25,12 +25,10 @@ export default function ArchiveLoopSection() {
     const track2 = track2Ref.current;
     if (!track1 || !track2) return;
     
-    // We duplicate the arrays 4 times in the DOM, so 1 set is 25% of the total width.
-    // Moving xPercent to -25 perfectly loops 1 set.
     const anim1 = gsap.to(track1, {
       xPercent: -25,
       ease: 'none',
-      duration: 15, // Accelerated speed
+      duration: 15,
       repeat: -1,
       force3D: true,
     });
@@ -38,20 +36,10 @@ export default function ArchiveLoopSection() {
     const anim2 = gsap.to(track2, {
       xPercent: -25,
       ease: 'none',
-      duration: 20, // Accelerated speed
+      duration: 20,
       repeat: -1,
       force3D: true,
     });
-
-    // Optional: Reverse direction for track 2
-    // gsap.set(track2, { xPercent: -25 });
-    // const anim2 = gsap.to(track2, {
-    //   xPercent: 0,
-    //   ease: 'none',
-    //   duration: 45,
-    //   repeat: -1,
-    //   force3D: true,
-    // });
 
     const mm = gsap.matchMedia();
 
@@ -86,7 +74,7 @@ export default function ArchiveLoopSection() {
     <section className="bg-[var(--color-vaeren-void)] py-24 md:py-32 relative overflow-hidden z-20 border-t border-white/5">
       <div className="flex flex-col items-center mb-16 md:mb-24 px-4">
         <h2 className="type-meta text-[var(--color-vaeren-concrete)] tracking-[0.3em] uppercase border-b border-white/10 pb-4">
-          ARCHIVE / VISUAL WORLD
+          {dict.archive.label}
         </h2>
       </div>
 
@@ -95,7 +83,6 @@ export default function ArchiveLoopSection() {
         {/* Track 1: Drop 1 */}
         <div className="w-full relative flex items-center" data-cursor-text="DRAG">
           <div ref={track1Ref} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-              {/* Render 4 sets of the images to guarantee enough width to loop seamlessly */}
               {[...Array(4)].map((_, setIndex) => (
                 <React.Fragment key={`set1-${setIndex}`}>
                   {drop1Images.map((src, i) => (
@@ -118,7 +105,6 @@ export default function ArchiveLoopSection() {
         {/* Track 2: Drop 2 */}
         <div className="w-full relative flex items-center" data-cursor-text="DRAG">
           <div ref={track2Ref} className="flex gap-4 md:gap-8 w-max px-2 md:px-4" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-              {/* Render 4 sets of the images to guarantee enough width to loop seamlessly */}
               {[...Array(4)].map((_, setIndex) => (
                 <React.Fragment key={`set2-${setIndex}`}>
                   {drop2Images.map((src, i) => (

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-export default function PhilosophySection() {
+export default function PhilosophySection({ dict }) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -51,17 +51,17 @@ export default function PhilosophySection() {
           
           <div className="md:col-span-8">
             <h2 className="reveal-item type-h1 text-[var(--color-vaeren-bone)] w-full uppercase leading-[1.1] md:-ml-2">
-              Don't Make What <br className="hidden lg:block" /> Already Exists.
+              {dict.philosophy.headline}
             </h2>
           </div>
           
           <div className="md:col-span-4 flex flex-col gap-8 md:pb-3 lg:pb-6">
               <div className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg leading-relaxed">
-                Streetwear moves quickly. Vaeren exists to challenge repetition. We collaborate with brands to create clothing, campaigns, and visual identities that feel new, specific, and unmistakably theirs.
+                {dict.philosophy.body1}
               </div>
               
               <div className="reveal-item type-body text-[var(--color-vaeren-ash)] text-lg leading-relaxed">
-                The objective isn't simply to make something beautiful. It's to make something people remember.
+                {dict.philosophy.body2}
               </div>
           </div>
 
