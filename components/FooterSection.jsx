@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import MagneticElement from './MagneticElement';
 import ContactForm from './ContactForm';
 
@@ -73,6 +74,15 @@ export default function FooterSection() {
             </a>
             <span className="hidden md:inline">·</span>
             <span>Cairo, Egypt</span>
+        </div>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-6 type-meta text-xs text-[var(--color-vaeren-ash)]/60">
+            <Link href="/privacy" className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
+              Privacy Policy
+            </Link>
+            <Link href="/returns" className="hover:text-[var(--color-vaeren-bone)] transition-colors underline underline-offset-4">
+              Returns & Cancellations
+            </Link>
         </div>
 
       </div>
