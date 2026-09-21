@@ -192,5 +192,159 @@
     "section3Body": "For clients utilizing our \"Design With Us\" or physical product development services, samples and prototypes are produced for review and iteration. These are bespoke developmental assets and cannot be \"returned\" for a refund. Any physical manufacturing defects during a full production run are handled according to the specific manufacturing agreement signed prior to bulk production.",
     "lastUpdated": "Last Updated: September 2026",
     "contactEmail": "Contact: hello@vaeren.com"
+  },
+  "projectStarter": {
+    "intro": {
+      "title": "Let's figure out what you're building.",
+      "subtitle": "You don't need to know exactly what you need.",
+      "description": "Start with the idea. We'll figure out the rest.",
+      "cta": "LET'S START"
+    },
+    "projectType": {
+      "title": "What are you trying to build?",
+      "options": {
+        "product": {
+          "title": "PRODUCT",
+          "desc": "A garment, collection, or physical product."
+        },
+        "brand": {
+          "title": "BRAND",
+          "desc": "A new fashion brand or a brand that needs rebuilding."
+        },
+        "campaign": {
+          "title": "CAMPAIGN",
+          "desc": "A visual world, campaign, shoot, or creative direction."
+        },
+        "launch": {
+          "title": "LAUNCH",
+          "desc": "A collection or brand that's ready to go to market."
+        },
+        "custom": {
+          "title": "SOMETHING ELSE",
+          "desc": "Something that doesn't fit into these categories."
+        }
+      }
+    },
+    "stage": {
+      "title": "Where are you right now?",
+      "options": {
+        "idea": {
+          "title": "JUST AN IDEA",
+          "desc": "I have the concept but nothing built yet."
+        },
+        "development": {
+          "title": "EARLY DEVELOPMENT",
+          "desc": "I've started building it but need help."
+        },
+        "product": {
+          "title": "I HAVE A PRODUCT",
+          "desc": "The product exists but needs development."
+        },
+        "brand": {
+          "title": "I HAVE A BRAND",
+          "desc": "The identity exists."
+        },
+        "launch_ready": {
+          "title": "READY TO LAUNCH",
+          "desc": "Everything is mostly ready."
+        }
+      }
+    },
+    "needs": {
+      "title": "What do you need?",
+      "customTitle": "Tell us what you're thinking.",
+      "options": {
+        "garment_design": "Garment Design",
+        "pattern_development": "Pattern Development",
+        "technical_design": "Technical Design",
+        "tech_pack": "Tech Pack",
+        "3d_development": "3D Development",
+        "materials": "Materials / Construction",
+        "production_support": "Production Support",
+        "brand_strategy": "Brand Strategy",
+        "visual_identity": "Visual Identity",
+        "product_development": "Product Development",
+        "website": "Website",
+        "packaging": "Packaging",
+        "creative_direction": "Creative Direction",
+        "campaign": "Campaign",
+        "art_direction": "Art Direction",
+        "photography": "Photography",
+        "styling": "Styling",
+        "video": "Video",
+        "campaign_concept": "Campaign Concept",
+        "social_content": "Social Content",
+        "launch_strategy": "Launch Strategy",
+        "campaign_creative": "Campaign Creative",
+        "landing_page": "Landing Page",
+        "paid_media": "Paid Media",
+        "meta_ads": "Meta Ads",
+        "content": "Content",
+        "conversion_optimization": "Conversion Optimization",
+        "something_else": "Something Else"
+      }
+    },
+    "budget": {
+      "title": "What's your starting budget?",
+      "subtitle": "This helps us understand the scale of the project.",
+      "description": "If you're not sure yet, that's completely fine.",
+      "options": {
+        "100_250": "$100 – $250",
+        "250_500": "$250 – $500",
+        "500_1000": "$500 – $1,000",
+        "1000_plus": "$1,000+",
+        "not_sure": "NOT SURE YET"
+      }
+    },
+    "details": {
+      "title": "Tell us about it.",
+      "placeholder": "What are you trying to create?\nTell us whatever you already know.",
+      "prompts": "Optional: Brand name, Reference, Collection, Deadline, Target market, Anything else we should know"
+    },
+    "contact": {
+      "title": "Where can we reach you?",
+      "name": "Name *",
+      "brand": "Brand / Company",
+      "email": "Email *",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "website": "Website",
+      "requiredNote": "* Required"
+    },
+    "review": {
+      "recommendationPrefix": "THIS SOUNDS LIKE A",
+      "recommendationSuffix": "PROJECT.",
+      "recommendationDesc": "Based on what you've told us, this looks like a perfect match for our service.",
+      "willHelpWith": "What we'll help with",
+      "startingFrom": "PROJECTS LIKE THIS START FROM",
+      "priceDisclaimer": "Final pricing depends on scope, complexity and production requirements.",
+      "yourProject": "YOUR PROJECT",
+      "projectLabel": "PROJECT",
+      "stageLabel": "STAGE",
+      "needsLabel": "NEEDS",
+      "budgetLabel": "BUDGET",
+      "contactLabel": "CONTACT",
+      "editBtn": "EDIT",
+      "submitBtn": "START THE PROJECT →",
+      "changeAnswers": "CHANGE MY ANSWERS"
+    },
+    "success": {
+      "title": "PROJECT STARTED.",
+      "subtitle": "We've got it.",
+      "body": "We'll review your project and get back to you with what we think it needs next.",
+      "backBtn": "BACK TO VAEREN →",
+      "exploreText": "While you're here, explore some of our work."
+    },
+    "error": {
+      "title": "SOMETHING WENT WRONG.",
+      "subtitle": "Your project wasn't submitted.",
+      "tryAgainBtn": "TRY AGAIN →",
+      "backBtn": "BACK"
+    },
+    "nav": {
+      "back": "BACK",
+      "next": "NEXT",
+      "skip": "SKIP"
+    }
   }
 }

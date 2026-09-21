@@ -192,5 +192,159 @@
     "section3Body": "في مشاريع \"صمّم معنا\"، يتم إنتاج العينات (Samples) بهدف المراجعة والتطوير. هذه أصول مخصصة ولا يمكن \"إرجاعها\". تتم معالجة أي عيوب تصنيعية بناءً على الشروط المتفق عليها قبل بدء الإنتاج بالجملة.",
     "lastUpdated": "آخر تحديث: سبتمبر ٢٠٢٦",
     "contactEmail": "التواصل: hello@vaeren.com"
+  },
+  "projectStarter": {
+    "intro": {
+      "title": "دعنا نحدد ما تبنيه.",
+      "subtitle": "لا تحتاج لمعرفة التفاصيل بدقة الآن.",
+      "description": "ابدأ بالفكرة. ونحن نتولى الباقي.",
+      "cta": "لنبدأ ←"
+    },
+    "projectType": {
+      "title": "ما الذي تسعى لبنائه؟",
+      "options": {
+        "product": {
+          "title": "PRODUCT",
+          "desc": "قطعة أزياء، مجموعة (Collection)، أو منتج مادي."
+        },
+        "brand": {
+          "title": "BRAND",
+          "desc": "تأسيس براند أزياء جديد، أو إعادة بناء براند حالي."
+        },
+        "campaign": {
+          "title": "CAMPAIGN",
+          "desc": "عالم بصري، حملة إعلانية، تصوير، أو Art Direction."
+        },
+        "launch": {
+          "title": "LAUNCH",
+          "desc": "البراند جاهز ويحتاج لاستراتيجية وتجهيزات الإطلاق للسوق."
+        },
+        "custom": {
+          "title": "SOMETHING ELSE",
+          "desc": "فكرة مختلفة لا تندرج تحت التصنيفات السابقة."
+        }
+      }
+    },
+    "stage": {
+      "title": "أين تقف الآن؟",
+      "options": {
+        "idea": {
+          "title": "JUST AN IDEA",
+          "desc": "لدي الـ Concept ولكن لم أبدأ التنفيذ بعد."
+        },
+        "development": {
+          "title": "EARLY DEVELOPMENT",
+          "desc": "بدأت بالتنفيذ ولكن أحتاج مساعدة."
+        },
+        "product": {
+          "title": "I HAVE A PRODUCT",
+          "desc": "المنتج موجود ولكن يحتاج لمزيد من التطوير."
+        },
+        "brand": {
+          "title": "I HAVE A BRAND",
+          "desc": "الهوية (Brand Identity) موجودة وجاهزة."
+        },
+        "launch_ready": {
+          "title": "READY TO LAUNCH",
+          "desc": "كل شيء جاهز تقريباً للإطلاق."
+        }
+      }
+    },
+    "needs": {
+      "title": "ما الذي تحتاجه بالضبط؟",
+      "customTitle": "أخبرنا بما تفكر فيه.",
+      "options": {
+        "garment_design": "Garment Design (تصميم القطع)",
+        "pattern_development": "Pattern Development (تطوير الباترون)",
+        "technical_design": "Technical Design",
+        "tech_pack": "Tech Packs (ملفات التصنيع)",
+        "3d_development": "3D Development",
+        "materials": "Materials / Construction",
+        "production_support": "Production Support (دعم الإنتاج)",
+        "brand_strategy": "Brand Strategy (استراتيجية البراند)",
+        "visual_identity": "Visual Identity (الهوية البصرية)",
+        "product_development": "Product Development (تطوير المنتجات)",
+        "website": "Website / E-commerce",
+        "packaging": "Packaging (التغليف)",
+        "creative_direction": "Creative Direction",
+        "campaign": "Campaign (حملة إعلانية)",
+        "art_direction": "Art Direction",
+        "photography": "Photography (تصوير)",
+        "styling": "Styling (تنسيق الأزياء)",
+        "video": "Video / Motion",
+        "campaign_concept": "Campaign Concept",
+        "social_content": "Social Content (محتوى السوشيال ميديا)",
+        "launch_strategy": "Launch Strategy (استراتيجية الإطلاق)",
+        "campaign_creative": "Campaign Creative",
+        "landing_page": "Landing Page (صفحة هبوط للتحويل)",
+        "paid_media": "Paid Media (إعلانات مدفوعة)",
+        "meta_ads": "Meta Ads",
+        "content": "Content (صناعة المحتوى)",
+        "conversion_optimization": "Conversion Optimization (CRO)",
+        "something_else": "Something Else (شيء آخر)"
+      }
+    },
+    "budget": {
+      "title": "ما هي ميزانيتك المبدئية؟",
+      "subtitle": "هذا يساعدنا في فهم حجم ونطاق المشروع.",
+      "description": "إذا لم تكن متأكداً بعد، لا توجد مشكلة إطلاقاً.",
+      "options": {
+        "100_250": "$100 – $250",
+        "250_500": "$250 – $500",
+        "500_1000": "$500 – $1,000",
+        "1000_plus": "$1,000+",
+        "not_sure": "NOT SURE YET (لست متأكداً بعد)"
+      }
+    },
+    "details": {
+      "title": "أخبرنا المزيد عن المشروع.",
+      "placeholder": "ما الذي تسعى لابتكاره؟\nشاركنا كل ما تعرفه عن مشروعك حتى الآن.",
+      "prompts": "اختياري: اسم البراند، الـ References، المجموعة، موعد الإطلاق، الجمهور المستهدف، أو أي تفاصيل أخرى."
+    },
+    "contact": {
+      "title": "كيف يمكننا التواصل معك؟",
+      "name": "الاسم *",
+      "brand": "اسم البراند / الشركة",
+      "email": "البريد الإلكتروني *",
+      "whatsapp": "رقم WhatsApp",
+      "instagram": "حساب Instagram",
+      "website": "رابط الموقع",
+      "requiredNote": "* مطلوب"
+    },
+    "review": {
+      "recommendationPrefix": "يبدو أن مشروعك يتطابق مع",
+      "recommendationSuffix": ".",
+      "recommendationDesc": "بناءً على التفاصيل التي قدمتها، هذه هي المنهجية الأنسب لك.",
+      "willHelpWith": "سوف نساعدك في:",
+      "startingFrom": "مشاريع مشابهة تبدأ من",
+      "priceDisclaimer": "التكلفة النهائية تعتمد على النطاق، التعقيد، ومتطلبات الإنتاج.",
+      "yourProject": "تفاصيل مشروعك",
+      "projectLabel": "المشروع",
+      "stageLabel": "المرحلة",
+      "needsLabel": "الاحتياجات",
+      "budgetLabel": "الميزانية",
+      "contactLabel": "التواصل",
+      "editBtn": "تعديل",
+      "submitBtn": "ابدأ المشروع ←",
+      "changeAnswers": "تعديل الإجابات"
+    },
+    "success": {
+      "title": "PROJECT STARTED.",
+      "subtitle": "تلقينا طلبك بنجاح.",
+      "body": "سنقوم بمراجعة تفاصيل مشروعك وسنتواصل معك قريباً لتحديد الخطوات القادمة.",
+      "backBtn": "العودة إلى VAEREN ←",
+      "exploreText": "بينما نراجع طلبك، استكشف بعض أعمالنا."
+    },
+    "error": {
+      "title": "SOMETHING WENT WRONG.",
+      "subtitle": "لم يتم إرسال مشروعك.",
+      "tryAgainBtn": "حاول مرة أخرى ←",
+      "backBtn": "رجوع"
+    },
+    "nav": {
+      "back": "رجوع",
+      "next": "التالي",
+      "skip": "تخطي"
+    }
   }
 }

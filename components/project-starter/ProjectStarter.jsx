@@ -1,0 +1,217 @@
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ProjectProgress from './ProjectProgress';
+import StepIntro from './steps/StepIntro';
+import StepProjectType from './steps/StepProjectType';
+import StepStage from './steps/StepStage';
+import StepNeeds from './steps/StepNeeds';
+import StepBudget from './steps/StepBudget';
+import StepDetails from './steps/StepDetails';
+import StepContact from './steps/StepContact';
+import StepReview from './steps/StepReview';
+import StepSuccess from './steps/StepSuccess';
+import StepError from './steps/StepError';
+import MagneticElement from '../MagneticElement';
+
+export default function ProjectStarter({ dict, lang, preselectedService }) {
+  // Define Steps
+  // 0: Intro
+  // 1: Project Type
+  // 2: Stage
+  // 3: Needs
+  // 4: Budget
+  // 5: Details
+  // 6: Contact
+  // 7: Review
+  // 8: Success / 9: Error
+  const [currentStep, setCurrentStep] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    projectType: '',
+    projectStage: '',
+    needs: [],
+    budget: '',
+    projectDescription: '',
+    name: '',
+    brand: '',
+    email: '',
+    whatsapp: '',
+    instagram: '',
+    website: ''
+  });
+
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    // Initial preselection if passed via URL
+    if (preselectedService && !formData.projectType) {
+      const typeMap = {
+        'design-with-us': 'product',
+        'build-the-world': 'campaign',
+        'create-together': 'brand',
+        'launch-with-us': 'launch',
+        'something-else': 'custom'
+      };
+      if (typeMap[preselectedService]) {
+        setFormData(prev => ({ ...prev, projectType: typeMap[preselectedService] }));
+        setCurrentStep(1); // Skip intro if preselected
+      }
+    }
+  }, [preselectedService, formData.projectType]);
+
+  const updateFormData = (key, value) => {
+    setFormData(prev => ({ ...prev, [key]: value }));
+  };
+
+  const nextStep = () => {
+    setDirection(1);
+    setCurrentStep(prev => prev + 1);
+  };
+
+  const prevStep = () => {
+    setDirection(-1);
+    setCurrentStep(prev => prev - 1);
+  };
+
+  const goToStep = (stepIndex) => {
+    setDirection(stepIndex > currentStep ? 1 : -1);
+    setCurrentStep(stepIndex);
+  };
+
+  // GSAP Transition Effect when step changes
+  useEffect(() => {
+    if (contentRef.current) {
+      gsap.fromTo(contentRef.current,
+        { opacity: 0, y: direction > 0 ? 20 : -20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+      );
+    }
+  }, [currentStep, direction]);
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    
+    // Calculate recommendation based on spec logic
+    let recommendedService = 'Something Else';
+    let recommendedServiceSlug = 'something-else';
+    
+    // Needs take priority
+    const needsStr = formData.needs.join(' ');
+    if (needsStr.includes('Brand Strategy') || needsStr.includes('استراتيجية البراند')) {
+      recommendedService = 'Create Together';
+      recommendedServiceSlug = 'create-together';
+    } else if (needsStr.includes('Garment Design') || needsStr.includes('تصميم القطع')) {
+      recommendedService = 'Design With Us';
+      recommendedServiceSlug = 'design-with-us';
+    } else if (needsStr.includes('Art Direction')) {
+      recommendedService = 'Build The World';
+      recommendedServiceSlug = 'build-the-world';
+    } else if (needsStr.includes('Launch Strategy') || needsStr.includes('استراتيجية الإطلاق')) {
+      recommendedService = 'Launch With Us';
+      recommendedServiceSlug = 'launch-with-us';
+    } else {
+      // Fallback to projectType
+      const typeMap = {
+        'product': { name: 'Design With Us', slug: 'design-with-us' },
+        'brand': { name: 'Create Together', slug: 'create-together' },
+        'campaign': { name: 'Build The World', slug: 'build-the-world' },
+        'launch': { name: 'Launch With Us', slug: 'launch-with-us' },
+        'custom': { name: 'Something Else', slug: 'something-else' }
+      };
+      if (typeMap[formData.projectType]) {
+        recommendedService = typeMap[formData.projectType].name;
+        recommendedServiceSlug = typeMap[formData.projectType].slug;
+      }
+    }
+
+    // Capture UTMs
+    const getQueryParam = (param) => {
+      if (typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param) || '';
+      }
+      return '';
+    };
+
+    const payload = {
+      ...formData,
+      recommendedService,
+      recommendedServiceSlug,
+      utm_source: getQueryParam('utm_source'),
+      utm_medium: getQueryParam('utm_medium'),
+      utm_campaign: getQueryParam('utm_campaign'),
+      utm_content: getQueryParam('utm_content'),
+      utm_term: getQueryParam('utm_term'),
+      landing_page: getQueryParam('landing_page') || (typeof window !== 'undefined' ? window.location.href : ''),
+      referrer: typeof document !== 'undefined' ? document.referrer : '',
+      fbclid: getQueryParam('fbclid')
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/mqazknoo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        // Fire Meta Pixel ONLY on success
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'Lead');
+        }
+        setCurrentStep(8); // Success
+      } else {
+        setCurrentStep(9); // Error
+      }
+    } catch (err) {
+      setCurrentStep(9); // Error
+    }
+    setIsSubmitting(false);
+  };
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 0: return <StepIntro dict={dict} onNext={nextStep} />;
+      case 1: return <StepProjectType dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 2: return <StepStage dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 3: return <StepNeeds dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 4: return <StepBudget dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 5: return <StepDetails dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 6: return <StepContact dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 7: return <StepReview dict={dict} lang={lang} formData={formData} onNext={handleSubmit} onPrev={prevStep} onEdit={goToStep} isSubmitting={isSubmitting} />;
+      case 8: return <StepSuccess dict={dict} lang={lang} />;
+      case 9: return <StepError dict={dict} onRetry={() => setCurrentStep(7)} />;
+      default: return null;
+    }
+  };
+
+  const isRTL = lang === 'ar';
+
+  return (
+    <div className="min-h-screen w-full bg-black text-[var(--color-vaeren-bone)] flex flex-col pt-6 md:pt-12 px-4 md:px-12 relative overflow-hidden font-sans">
+      {/* Header */}
+      <header className={`flex justify-between items-center w-full z-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
+        <MagneticElement strength={0.2}>
+          <a href={`/${lang}`} className="block">
+            <img src="/logo.webp" alt="Vaeren Studios" className="h-6 object-contain" />
+          </a>
+        </MagneticElement>
+        
+        {/* Only show progress if in form steps */}
+        {currentStep > 0 && currentStep < 8 && (
+          <ProjectProgress current={currentStep} total={7} isRTL={isRTL} />
+        )}
+
+        <div className="w-6 hidden md:block"></div> {/* Spacer for balance */}
+      </header>
+
+      {/* Content Area */}
+      <div className="flex-1 flex flex-col justify-center items-center w-full max-w-4xl mx-auto py-12" ref={contentRef}>
+        {renderStep()}
+      </div>
+    </div>
+  );
+}

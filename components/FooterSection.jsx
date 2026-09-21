@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import MagneticElement from './MagneticElement';
-import ContactForm from './ContactForm';
 
 const EMAIL = 'kamal.ashour.bessa@gmail.com';
 const SUBJECT = 'Collaboration Inquiry — Vaeren Studios';
@@ -23,7 +22,6 @@ Looking forward to hearing from you.`;
 const MAILTO_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
 export default function FooterSection({ dict, lang }) {
-  const [showForm, setShowForm] = useState(false);
   const isRTL = lang === 'ar';
   const arrow = isRTL ? '\u2190' : '\u2192';
 
@@ -37,20 +35,12 @@ export default function FooterSection({ dict, lang }) {
           <span className="text-[var(--color-vaeren-concrete)]">{dict.footer.headline3}</span>
         </h2>
         
-        {showForm ? (
-          <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-             <ContactForm dict={dict} lang={lang} />
-             <div className="mt-12 type-meta text-[var(--color-vaeren-ash)]">
-               {dict.footer.preferEmail} <a href={MAILTO_HREF} className="text-[var(--color-vaeren-concrete)] underline hover:text-white">kamal.ashour.bessa@gmail.com</a>
-             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-              <MagneticElement strength={0.2}>
-                  <button onClick={() => setShowForm(true)} className="btn-primary" data-cursor-text="START">
-                      {dict.footer.startProject} <span className="arrow ml-2">{arrow}</span>
-                  </button>
-              </MagneticElement>
+        <div className="flex flex-col md:flex-row gap-4 items-center">
+            <MagneticElement strength={0.2}>
+                <a href={`/${lang}/start-a-project`} className="btn-primary" data-cursor-text="START">
+                    {dict.footer.startProject} <span className="arrow ml-2">{arrow}</span>
+                </a>
+            </MagneticElement>
               <MagneticElement strength={0.2}>
                   <a 
                     href="https://www.instagram.com/vaeren.studios/" 
@@ -62,8 +52,7 @@ export default function FooterSection({ dict, lang }) {
                       {dict.footer.followOnInstagram} <span className="arrow ml-2">{arrow}</span>
                   </a>
               </MagneticElement>
-          </div>
-        )}
+        </div>
 
         <div className="mt-16 flex flex-col md:flex-row gap-6 md:gap-12 items-center type-meta text-[var(--color-vaeren-ash)]">
             <a 

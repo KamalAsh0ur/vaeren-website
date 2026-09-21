@@ -144,7 +144,7 @@ export default async function ServicePage({ params }) {
       <Cursor />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
-      <ServiceHero hero={data} lang={lang} />
+      <ServiceHero hero={data} lang={lang} slug={slug} />
       
       {slug === 'something-else' ? (
         <PositioningStatement statement={data.positioningTitle} description={data.positioningBody} />
@@ -161,7 +161,7 @@ export default async function ServicePage({ params }) {
       <EditorialCapabilities capabilities={data.capabilities} dict={dict} />
       <MinimalProcess steps={data.process} dict={dict} />
       <DeepCaseStudy study={caseStudy} dict={dict} lang={lang} />
-      <ConversationalCTA dict={dict} lang={lang} serviceTitle={data.title.replace('\n', ' ')} />
+      <ConversationalCTA dict={dict} lang={lang} serviceSlug={slug} />
     </main>
   );
 }

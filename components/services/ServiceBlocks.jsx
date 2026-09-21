@@ -4,7 +4,7 @@ import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import ContactForm from '../ContactForm';
 
-export function ServiceHero({ hero, ctaText = "Start a project", lang }) {
+export function ServiceHero({ hero, ctaText = "Start a project", lang, slug }) {
   const isRTL = lang === 'ar';
   const arrow = isRTL ? '\u2190' : '\u2192';
 
@@ -23,7 +23,7 @@ export function ServiceHero({ hero, ctaText = "Start a project", lang }) {
           {hero.heroBody}
         </p>
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
-            <a href="#contact-flow" className={`type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-8 tracking-widest uppercase text-sm md:text-base flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <a href={`/${lang}/start-a-project?service=${slug}`} className={`type-meta text-[var(--color-vaeren-concrete)] hover:text-white transition-colors underline underline-offset-8 tracking-widest uppercase text-sm md:text-base flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                 {ctaText} <span className={isRTL ? 'mr-2' : 'ml-2'}>{arrow}</span>
             </a>
         </div>
@@ -172,8 +172,7 @@ export function DeepCaseStudy({ study, dict, lang }) {
   );
 }
 
-export function ConversationalCTA({ dict, lang, serviceTitle = "General Inquiry" }) {
-    const [showForm, setShowForm] = useState(false);
+export function ConversationalCTA({ dict, lang, serviceSlug = "" }) {
     const isRTL = lang === 'ar';
     const arrow = isRTL ? '\u2190' : '\u2192';
 
@@ -183,22 +182,14 @@ export function ConversationalCTA({ dict, lang, serviceTitle = "General Inquiry"
                 {dict.footer.headline1} <br/> {dict.footer.headline2}
             </h2>
             
-            {showForm ? (
-               <div className="w-full mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                 <Suspense fallback={<div className="type-meta uppercase tracking-widest text-xs">{dict.serviceBlocks.loadingForm}</div>}>
-                   <ContactForm dict={dict} lang={lang} serviceName={serviceTitle} />
-                 </Suspense>
-              </div>
-            ) : (
-              <button 
-                onClick={() => setShowForm(true)} 
+              <a 
+                href={`/${lang}/start-a-project${serviceSlug ? `?service=${serviceSlug}` : ''}`} 
                 className={`group relative inline-flex items-center justify-center bg-black text-white px-10 py-5 rounded-sm overflow-hidden border border-black transition-all hover:bg-transparent hover:text-black ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                   <span className="type-meta tracking-widest uppercase text-xs md:text-sm relative z-10 font-medium flex items-center">
                       {dict.serviceBlocks.startProject} <span className={isRTL ? 'mr-2' : 'ml-2'}>{arrow}</span>
                   </span>
-              </button>
-            )}
+              </a>
 
             <div className="mt-24 flex flex-col md:flex-row gap-6 md:gap-12 items-center type-meta tracking-widest text-black/60 text-xs">
                 <a href="https://www.instagram.com/vaeren.studios/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors underline underline-offset-4">

@@ -2,7 +2,8 @@ import { Cormorant_Garamond, Outfit, Noto_Kufi_Arabic } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
-import { hasLocale, locales } from './dictionaries';
+import { hasLocale, locales, getDictionary } from './dictionaries';
+import MobileStickyCTA from '../../components/MobileStickyCTA';
 import '../globals.css';
 
 // Display font for collection titles, hero statements, major navigation
@@ -66,11 +67,13 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children, params }) {
-  const { lang } = await params;
-
+  const resolvedParams = await params;
+  const { lang } = resolvedParams;
   if (!hasLocale(lang)) {
     notFound();
   }
+
+  const dict = await getDictionary(lang);
 
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
 
@@ -116,6 +119,7 @@ export default async function RootLayout({ children, params }) {
             })
           }}
         />
+        <MobileStickyCTA lang={lang} dict={dict} />
       </body>
     </html>
   );

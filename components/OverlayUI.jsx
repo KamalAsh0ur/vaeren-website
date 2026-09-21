@@ -163,7 +163,7 @@ export default function OverlayUI({ dict, lang }) {
             </MagneticElement>
             <div className="hidden md:block">
               <MagneticElement strength={0.4}>
-                  <a href={MAILTO_HREF} className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="START">{dict.nav.startProject}</a>
+                  <a href={`/${lang}/start-a-project`} className="hover:text-[var(--color-vaeren-bone)] transition-colors py-2" data-cursor-text="START">{dict.nav.startProject}</a>
               </MagneticElement>
             </div>
           </nav>
@@ -213,7 +213,7 @@ export default function OverlayUI({ dict, lang }) {
             <h2 className="type-h1 mb-8 stagger-item opacity-0">{dict.phases.collection.title}</h2>
             <div className="stagger-item opacity-0 pointer-events-auto flex flex-col md:flex-row gap-4">
                 <MagneticElement strength={0.3}>
-                    <a href={MAILTO_HREF} className="btn-primary" data-cursor-text="START">
+                    <a href={`/${lang}/start-a-project`} className="btn-primary" data-cursor-text="START">
                         {dict.phases.collection.startProject} <span className="arrow">{arrow}</span>
                     </a>
                 </MagneticElement>
