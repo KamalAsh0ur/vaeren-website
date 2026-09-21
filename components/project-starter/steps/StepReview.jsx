@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import MagneticElement from '../../MagneticElement';
 
 export default function StepReview({ dict, lang, formData, onNext, onPrev, onEdit, isSubmitting }) {
@@ -68,6 +69,15 @@ export default function StepReview({ dict, lang, formData, onNext, onPrev, onEdi
     return obj.options[key]?.title || obj.options[key] || key;
   };
 
+  const collageMap = {
+    'product': ['/images/project-starter/vs-ps-04-garment-prototype.png', '/images/project-starter/vs-ps-05-pattern-development.png'],
+    'brand': ['/images/project-starter/vs-ps-08-brand-wall.png', '/images/project-starter/vs-ps-04-garment-prototype.png'],
+    'campaign': ['/images/project-starter/vs-ps-07-campaign-set.png', '/images/project-starter/vs-ps-08-brand-wall.png'],
+    'launch': ['/images/project-starter/vs-ps-09-digital-launch.png', '/images/project-starter/vs-ps-07-campaign-set.png'],
+    'custom': ['/images/project-starter/vs-ps-11-empty-project-table.png', '/images/project-starter/vs-ps-10-technical-grid.png']
+  };
+  const currentCollage = collageMap[formData.projectType || 'custom'] || collageMap['custom'];
+
   return (
     <div className={`w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 ${isRTL ? 'text-right' : 'text-left'}`}>
       {/* Left: Recommendation */}
@@ -96,6 +106,15 @@ export default function StepReview({ dict, lang, formData, onNext, onPrev, onEdi
             </ul>
           </div>
         )}
+
+        <div className="flex gap-4 mb-12">
+          <div className="w-[45%] aspect-[4/5] relative overflow-hidden opacity-80 mix-blend-screen filter grayscale contrast-125">
+            <Image src={currentCollage[0]} fill className="object-cover" alt="Editorial Reference 1" />
+          </div>
+          <div className="w-[45%] aspect-[4/5] relative overflow-hidden opacity-60 mix-blend-screen filter grayscale contrast-125 translate-y-6">
+            <Image src={currentCollage[1]} fill className="object-cover" alt="Editorial Reference 2" />
+          </div>
+        </div>
 
         <div className="border border-[var(--color-vaeren-iron)] p-6 mt-auto">
           <p className="type-meta text-[var(--color-vaeren-concrete)] mb-2 uppercase">{d.startingFrom}</p>

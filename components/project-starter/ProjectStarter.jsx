@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import ProjectProgress from './ProjectProgress';
+import ProjectVisualBackground from './ProjectVisualBackground';
 import StepIntro from './steps/StepIntro';
 import StepRegion from './steps/StepRegion';
 import StepAccessUnlocked from './steps/StepAccessUnlocked';
@@ -16,6 +17,20 @@ import StepReview from './steps/StepReview';
 import StepSuccess from './steps/StepSuccess';
 import StepError from './steps/StepError';
 import MagneticElement from '../MagneticElement';
+
+// Master Asset Configuration
+export const projectStarterVisuals = {
+  atelier: { src: '/images/project-starter/vs-ps-01-atelier.png', desktopPosition: 'center', mobilePosition: '70% center' },
+  worktable: { src: '/images/project-starter/vs-ps-02-worktable.png', desktopPosition: 'center', mobilePosition: 'center' },
+  materialWall: { src: '/images/project-starter/vs-ps-03-material-wall.png', desktopPosition: 'center', mobilePosition: 'center' },
+  garmentPrototype: { src: '/images/project-starter/vs-ps-04-garment-prototype.png', desktopPosition: 'center', mobilePosition: 'center' },
+  patternDevelopment: { src: '/images/project-starter/vs-ps-05-pattern-development.png', desktopPosition: 'center', mobilePosition: 'center' },
+  campaignSet: { src: '/images/project-starter/vs-ps-07-campaign-set.png', desktopPosition: 'center', mobilePosition: 'center' },
+  brandWall: { src: '/images/project-starter/vs-ps-08-brand-wall.png', desktopPosition: 'center', mobilePosition: 'center' },
+  digitalLaunch: { src: '/images/project-starter/vs-ps-09-digital-launch.png', desktopPosition: 'center', mobilePosition: 'center' },
+  technicalGrid: { src: '/images/project-starter/vs-ps-10-technical-grid.png', desktopPosition: 'center', mobilePosition: 'center' },
+  emptyTable: { src: '/images/project-starter/vs-ps-11-empty-project-table.png', desktopPosition: 'center', mobilePosition: 'center' }
+};
 
 export default function ProjectStarter({ dict, lang, preselectedService }) {
   // Define Steps
@@ -50,6 +65,34 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
   });
 
   const contentRef = useRef(null);
+
+  // Dynamic Background Engine
+  const activeBackground = useMemo(() => {
+    const typeVisualMap = {
+      'product': projectStarterVisuals.garmentPrototype,
+      'brand': projectStarterVisuals.brandWall,
+      'campaign': projectStarterVisuals.campaignSet,
+      'launch': projectStarterVisuals.digitalLaunch,
+      'custom': projectStarterVisuals.emptyTable
+    };
+
+    switch (currentStep) {
+      case 0: return { ...projectStarterVisuals.atelier, overlay: 0.55 }; // Intro
+      case 1: return { ...projectStarterVisuals.worktable, overlay: 0.5 }; // Region
+      case 2: return { ...projectStarterVisuals.worktable, overlay: 0.6 }; // Access Unlocked
+      case 3: return { ...projectStarterVisuals.atelier, overlay: 0.65 }; // Project Type (Cards are visuals)
+      case 4: return { ...projectStarterVisuals.technicalGrid, overlay: 0.7 }; // Stage
+      case 5: // Needs dynamically maps to Project Type
+        return { ...(typeVisualMap[formData.projectType] || projectStarterVisuals.technicalGrid), overlay: 0.65 };
+      case 6: return { ...projectStarterVisuals.technicalGrid, overlay: 0.75 }; // Budget
+      case 7: return { ...projectStarterVisuals.emptyTable, overlay: 0.45 }; // Details
+      case 8: return { ...projectStarterVisuals.digitalLaunch, overlay: 0.65 }; // Contact
+      case 9: return null; // Review Screen renders its own background / collage
+      case 10: return { ...projectStarterVisuals.emptyTable, overlay: 0.5 }; // Success
+      case 11: return { ...projectStarterVisuals.atelier, overlay: 0.75 }; // Error
+      default: return null;
+    }
+  }, [currentStep, formData.projectType]);
 
   useEffect(() => {
     // Initial preselection if passed via URL
@@ -199,6 +242,17 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
 
   return (
     <div className="min-h-screen w-full bg-black text-[var(--color-vaeren-bone)] flex flex-col pt-6 md:pt-12 px-4 md:px-12 relative overflow-hidden font-sans">
+      
+      {/* Dynamic Master Background */}
+      {activeBackground && (
+        <ProjectVisualBackground 
+          src={activeBackground.src} 
+          overlay={activeBackground.overlay} 
+          desktopPosition={activeBackground.desktopPosition}
+          mobilePosition={activeBackground.mobilePosition}
+        />
+      )}
+
       {/* Header */}
       <header className={`flex justify-between items-center w-full z-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
         <MagneticElement strength={0.2}>
