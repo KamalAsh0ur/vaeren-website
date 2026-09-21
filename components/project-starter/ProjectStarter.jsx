@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ProjectProgress from './ProjectProgress';
 import StepIntro from './steps/StepIntro';
+import StepRegion from './steps/StepRegion';
+import StepAccessUnlocked from './steps/StepAccessUnlocked';
 import StepProjectType from './steps/StepProjectType';
 import StepStage from './steps/StepStage';
 import StepNeeds from './steps/StepNeeds';
@@ -18,19 +20,22 @@ import MagneticElement from '../MagneticElement';
 export default function ProjectStarter({ dict, lang, preselectedService }) {
   // Define Steps
   // 0: Intro
-  // 1: Project Type
-  // 2: Stage
-  // 3: Needs
-  // 4: Budget
-  // 5: Details
-  // 6: Contact
-  // 7: Review
-  // 8: Success / 9: Error
+  // 1: Region
+  // 2: AccessUnlocked
+  // 3: Project Type
+  // 4: Stage
+  // 5: Needs
+  // 6: Budget
+  // 7: Details
+  // 8: Contact
+  // 9: Review
+  // 10: Success / 11: Error
   const [currentStep, setCurrentStep] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
+    region: '',
     projectType: '',
     projectStage: '',
     needs: [],
@@ -58,7 +63,7 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
       };
       if (typeMap[preselectedService]) {
         setFormData(prev => ({ ...prev, projectType: typeMap[preselectedService] }));
-        setCurrentStep(1); // Skip intro if preselected
+        setCurrentStep(1); // Skip intro, go straight to Region
       }
     }
   }, [preselectedService, formData.projectType]);
@@ -162,12 +167,12 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
         if (typeof window !== 'undefined' && window.fbq) {
           window.fbq('track', 'Lead');
         }
-        setCurrentStep(8); // Success
+        setCurrentStep(10); // Success
       } else {
-        setCurrentStep(9); // Error
+        setCurrentStep(11); // Error
       }
     } catch (err) {
-      setCurrentStep(9); // Error
+      setCurrentStep(11); // Error
     }
     setIsSubmitting(false);
   };
@@ -175,15 +180,17 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
   const renderStep = () => {
     switch (currentStep) {
       case 0: return <StepIntro dict={dict} onNext={nextStep} />;
-      case 1: return <StepProjectType dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 2: return <StepStage dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 3: return <StepNeeds dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 4: return <StepBudget dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 5: return <StepDetails dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 6: return <StepContact dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
-      case 7: return <StepReview dict={dict} lang={lang} formData={formData} onNext={handleSubmit} onPrev={prevStep} onEdit={goToStep} isSubmitting={isSubmitting} />;
-      case 8: return <StepSuccess dict={dict} lang={lang} />;
-      case 9: return <StepError dict={dict} onRetry={() => setCurrentStep(7)} />;
+      case 1: return <StepRegion dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 2: return <StepAccessUnlocked dict={dict} formData={formData} onNext={nextStep} />;
+      case 3: return <StepProjectType dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 4: return <StepStage dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 5: return <StepNeeds dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 6: return <StepBudget dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 7: return <StepDetails dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 8: return <StepContact dict={dict} formData={formData} updateFormData={updateFormData} onNext={nextStep} onPrev={prevStep} />;
+      case 9: return <StepReview dict={dict} lang={lang} formData={formData} onNext={handleSubmit} onPrev={prevStep} onEdit={goToStep} isSubmitting={isSubmitting} />;
+      case 10: return <StepSuccess dict={dict} lang={lang} />;
+      case 11: return <StepError dict={dict} onRetry={() => setCurrentStep(9)} />;
       default: return null;
     }
   };
@@ -200,11 +207,11 @@ export default function ProjectStarter({ dict, lang, preselectedService }) {
           </a>
         </MagneticElement>
         
-        {/* Only show progress if in form steps */}
-        {currentStep > 0 && currentStep < 8 && (
-          <ProjectProgress current={currentStep} total={7} isRTL={isRTL} />
-        )}
-
+        <div className="hidden md:block">
+          {currentStep > 0 && currentStep < 10 && (
+            <ProjectProgress stepId={currentStep} isRTL={isRTL} dict={dict} />
+          )}
+        </div>
         <div className="w-6 hidden md:block"></div> {/* Spacer for balance */}
       </header>
 

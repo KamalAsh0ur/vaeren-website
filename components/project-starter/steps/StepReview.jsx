@@ -6,35 +6,63 @@ export default function StepReview({ dict, lang, formData, onNext, onPrev, onEdi
   const isRTL = lang === 'ar';
 
   // Determine recommendation logic
-  let recommendedService = 'Something Else';
-  let startingPrice = '$100';
+  let recommendedService = 'SOMETHING ELSE';
+  let basePriceKey = 'custom';
   
   const needsStr = formData.needs.join(' ');
   if (needsStr.includes('Brand Strategy') || needsStr.includes('استراتيجية البراند')) {
     recommendedService = 'CREATE TOGETHER';
-    startingPrice = '$350';
+    basePriceKey = 'brand';
   } else if (needsStr.includes('Garment Design') || needsStr.includes('تصميم القطع')) {
     recommendedService = 'DESIGN WITH US';
-    startingPrice = '$100';
+    basePriceKey = 'product';
   } else if (needsStr.includes('Art Direction')) {
     recommendedService = 'BUILD THE WORLD';
-    startingPrice = '$150';
+    basePriceKey = 'campaign';
   } else if (needsStr.includes('Launch Strategy') || needsStr.includes('استراتيجية الإطلاق')) {
     recommendedService = 'LAUNCH WITH US';
-    startingPrice = '$150';
+    basePriceKey = 'launch';
   } else {
     const typeMap = {
-      'product': { name: 'DESIGN WITH US', price: '$100' },
-      'brand': { name: 'CREATE TOGETHER', price: '$350' },
-      'campaign': { name: 'BUILD THE WORLD', price: '$150' },
-      'launch': { name: 'LAUNCH WITH US', price: '$150' },
-      'custom': { name: 'SOMETHING ELSE', price: '$100' }
+      'product': { name: 'DESIGN WITH US', key: 'product' },
+      'brand': { name: 'CREATE TOGETHER', key: 'brand' },
+      'campaign': { name: 'BUILD THE WORLD', key: 'campaign' },
+      'launch': { name: 'LAUNCH WITH US', key: 'launch' },
+      'custom': { name: 'SOMETHING ELSE', key: 'custom' }
     };
     if (typeMap[formData.projectType]) {
       recommendedService = typeMap[formData.projectType].name;
-      startingPrice = typeMap[formData.projectType].price;
+      basePriceKey = typeMap[formData.projectType].key;
     }
   }
+
+  // PRICING ENGINE
+  const pricingMatrix = {
+    egypt: {
+      product: '3,500 EGP',
+      campaign: '5,000 EGP',
+      brand: '12,000 EGP',
+      launch: '5,000 EGP',
+      custom: '3,500 EGP'
+    },
+    mena: {
+      product: '$150',
+      campaign: '$150',
+      brand: '$350',
+      launch: '$150',
+      custom: '$100'
+    },
+    international: {
+      product: '$150',
+      campaign: '$200',
+      brand: '$500',
+      launch: '$200',
+      custom: '$150'
+    }
+  };
+
+  const region = formData.region || 'international';
+  const startingPrice = pricingMatrix[region][basePriceKey];
 
   const getLabel = (obj, key) => {
     return obj.options[key]?.title || obj.options[key] || key;

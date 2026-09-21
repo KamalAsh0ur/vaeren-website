@@ -200,6 +200,53 @@
       "description": "Start with the idea. We'll figure out the rest.",
       "cta": "LET'S START"
     },
+    "region": {
+      "title": "Where is your brand based?",
+      "options": {
+        "egypt": {
+          "title": "EGYPT",
+          "desc": "Operating primarily in the local market."
+        },
+        "mena": {
+          "title": "MENA / GCC",
+          "desc": "Operating in Saudi Arabia, UAE, or the wider region."
+        },
+        "international": {
+          "title": "INTERNATIONAL",
+          "desc": "Operating in US, UK, Europe, or globally."
+        }
+      }
+    },
+    "accessUnlocked": {
+      "egypt": {
+        "title": "LOCAL ACCESS UNLOCKED",
+        "body": "You qualify for Vaeren's local emerging-brand pricing.",
+        "benefits": [
+          "Local EGP pricing",
+          "Flexible payment options",
+          "Emerging-brand packages"
+        ]
+      },
+      "mena": {
+        "title": "REGIONAL ACCESS UNLOCKED",
+        "body": "Emerging brands across MENA receive regional project pricing.",
+        "benefits": [
+          "Regional project pricing",
+          "Flexible payment milestones",
+          "Regional collaboration"
+        ]
+      },
+      "international": {
+        "title": "STANDARD STUDIO ACCESS",
+        "body": "Our standard international studio rates apply.",
+        "benefits": [
+          "Standard global pricing",
+          "Full studio scope",
+          "International standards"
+        ]
+      },
+      "continueBtn": "CONTINUE →"
+    },
     "projectType": {
       "title": "What are you trying to build?",
       "options": {
