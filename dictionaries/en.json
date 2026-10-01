@@ -195,10 +195,16 @@
   },
   "projectStarter": {
     "intro": {
-      "title": "Let's figure out what you're building.",
-      "subtitle": "You don't need to know exactly what you need.",
-      "description": "Start with the idea. We'll figure out the rest.",
-      "cta": "LET'S START"
+      "badge": "2-MINUTE BRIEF",
+      "title": "Build something that matters.",
+      "subtitle": "You don't need to have it all figured out. Tell us your vision, and we'll engineer the execution.",
+      "description": "Answer a few questions to help us understand the scale and direction of your project.",
+      "benefits": [
+        "No Commitment",
+        "Direct Studio Access",
+        "Response in 48h"
+      ],
+      "cta": "START YOUR BRIEF"
     },
     "region": {
       "title": "Where is your brand based?",
@@ -344,9 +350,9 @@
       }
     },
     "details": {
-      "title": "Tell us about it.",
-      "placeholder": "What are you trying to create?\nTell us whatever you already know.",
-      "prompts": "Optional: Brand name, Reference, Collection, Deadline, Target market, Anything else we should know"
+      "title": "Tell us the vision.",
+      "placeholder": "What are you trying to build? Who is it for? Tell us the problem you're solving or the aesthetic you're aiming for.",
+      "prompts": "Optional but helpful: Brand name, references, target audience, timeline, or any creative constraints."
     },
     "contact": {
       "title": "Where can we reach you?",
@@ -376,11 +382,11 @@
       "changeAnswers": "CHANGE MY ANSWERS"
     },
     "success": {
-      "title": "PROJECT STARTED.",
-      "subtitle": "We've got it.",
-      "body": "We'll review your project and get back to you with what we think it needs next.",
-      "backBtn": "BACK TO VAEREN →",
-      "exploreText": "While you're here, explore some of our work."
+      "title": "BRIEF RECEIVED.",
+      "subtitle": "You're on the list.",
+      "body": "Our creative team is reviewing your brief. We'll be in touch within 48 hours to discuss the next move.",
+      "backBtn": "RETURN TO STUDIO →",
+      "exploreText": "While you wait, explore some of our recent work."
     },
     "error": {
       "title": "SOMETHING WENT WRONG.",
